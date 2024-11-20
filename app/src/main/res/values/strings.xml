@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Targeted Money Saver</string>
+
+
+    <string name="onboarding_image_description">Goal Saving</string>
+
+    <!-- Onboarding Text -->
+    <string name="onboarding_Text_1">Reach Your Goal, One Save at a Time</string>
+    <string name="onboarding_Text_2">Your Goals Are Worth Every Coin.</string>
+    <string name="onboarding_Text_3">Your Dream is Within Reach, Start Saving Today</string>
+
+    <string name="next">Next</string>
+</resources>
