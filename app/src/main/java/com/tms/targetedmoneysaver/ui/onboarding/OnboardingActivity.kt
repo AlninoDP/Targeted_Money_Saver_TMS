@@ -1,5 +1,6 @@
 package com.tms.targetedmoneysaver.ui.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.tms.targetedmoneysaver.OnboardingAdapter
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.component.OnboardingPage
 import com.tms.targetedmoneysaver.databinding.ActivityOnboardingBinding
+import com.tms.targetedmoneysaver.ui.login.LoginActivity
 
 class OnboardingActivity : AppCompatActivity() {
 
@@ -35,7 +37,7 @@ class OnboardingActivity : AppCompatActivity() {
                 if (viewPagerOnboarding.currentItem < onboardingPages.size - 1) {
                     viewPagerOnboarding.currentItem += 1
                 } else {
-                    // TODO: goto Login page
+                    goToLoginPage()
                     finish()
                 }
             }
@@ -52,6 +54,11 @@ class OnboardingActivity : AppCompatActivity() {
         })
 
 
+    }
+
+    private fun goToLoginPage(){
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     private fun setupOnboardingPage() {
