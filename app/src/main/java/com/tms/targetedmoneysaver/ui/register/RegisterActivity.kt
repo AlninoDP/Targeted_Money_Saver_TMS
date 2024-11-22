@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.textfield.TextInputLayout
+import com.tms.targetedmoneysaver.MainActivity
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.ActivityRegisterBinding
 import com.tms.targetedmoneysaver.ui.login.LoginActivity
@@ -41,13 +43,9 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 val email = binding.etRegisterEmail.text.toString()
                 val password = binding.etRegisterPassword.text.toString()
                 val passwordConfirmation = binding.etRegisterPasswordConfirmation.text.toString()
-                if (email.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty()) {
-                    return
-                }
 
-                // check password confirmation
-                if (password != passwordConfirmation) {
-                    return
+                if (validateInput(email, password, passwordConfirmation)){
+                    // TODO: Register Logic
                 }
 
             }
@@ -62,5 +60,29 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
         }
+    }
+
+    // Validate email and password
+    private fun validateInput(email: String, password: String, confirmPassword: String): Boolean {
+        if (email.isEmpty()) {
+            binding.etRegisterEmail.error = getString(R.string.invalid_email)
+            return false
+        }
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.etRegisterEmail.error = getString(R.string.invalid_email)
+            return false
+        }
+        if (password.isEmpty() || password.length < 8) {
+            binding.etRegisterPassword.error = getString(R.string.invalid_password)
+            binding.registerPasswordLayout.endIconMode = TextInputLayout.END_ICON_CUSTOM
+            return false
+        }
+
+        if (confirmPassword != password){
+            binding.etRegisterPasswordConfirmation.error = getString(R.string.password_not_match)
+            binding.registerPasswordConfirmationLayout.endIconMode = TextInputLayout.END_ICON_CUSTOM
+            return false
+        }
+        return true
     }
 }

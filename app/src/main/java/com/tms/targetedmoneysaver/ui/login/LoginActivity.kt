@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.textfield.TextInputLayout
+import com.tms.targetedmoneysaver.MainActivity
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.ActivityLoginBinding
 import com.tms.targetedmoneysaver.ui.register.RegisterActivity
@@ -36,17 +38,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_sign_in -> {
-                // TODO: Login Logic
                 val email = binding.etLoginEmail.text.toString()
                 val password = binding.etLoginPassword.text.toString()
-                if (email.isEmpty() || password.isEmpty()) {
-                    return
+                if (validateInput(email, password)) {
+                    // TODO: Login Logic
                 }
             }
 
             R.id.btn_google_login -> {
                 // TODO: Google Login Logic
-
             }
 
             R.id.tv_forget_password -> {
@@ -60,5 +60,23 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
         }
+    }
+
+    // Validate email and password
+    private fun validateInput(email: String, password: String): Boolean {
+        if (email.isEmpty()) {
+            binding.etLoginEmail.error = getString(R.string.invalid_email)
+            return false
+        }
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.etLoginEmail.error = getString(R.string.invalid_email)
+            return false
+        }
+        if (password.isEmpty() || password.length < 8) {
+            binding.etLoginPassword.error = getString(R.string.invalid_password)
+            binding.loginPasswordLayout.endIconMode = TextInputLayout.END_ICON_CUSTOM
+            return false
+        }
+        return true
     }
 }
