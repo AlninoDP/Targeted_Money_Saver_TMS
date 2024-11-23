@@ -40,4 +40,6 @@
     <string name="register_page_header_text">Create an Account</string>
     <string name="register_page_sub_header_text">Please register your account!</string>
     <string name="have_account">already have an account?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_goal_navigation"
+    app:startDestination="@id/addGoalImageFragment">
+    <fragment
+        android:id="@+id/addGoalImageFragment"
+        android:name="com.tms.targetedmoneysaver.ui.add_goal.fragment.AddGoalImageFragment"
+        android:label="fragment_add_goal_image"
+        tools:layout="@layout/fragment_add_goal_image" >
+        <action
+            android:id="@+id/action_addGoalImageFragment_to_addGoalPeriodFragment"
+            app:destination="@id/addGoalPeriodFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/addGoalBreakdownFragment"
+        android:name="com.tms.targetedmoneysaver.ui.add_goal.fragment.AddGoalBreakdownFragment"
+        android:label="fragment_add_goal_breakdown"
+        tools:layout="@layout/fragment_add_goal_breakdown" >
+        <action
+            android:id="@+id/action_addGoalBreakdownFragment_to_homeActivity"
+            app:destination="@id/homeActivity"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/addGoalPeriodFragment"
+        android:name="com.tms.targetedmoneysaver.ui.add_goal.fragment.AddGoalPeriodFragment"
+        android:label="fragment_add_goal_period"
+        tools:layout="@layout/fragment_add_goal_period" >
+        <action
+            android:id="@+id/action_addGoalPeriodFragment_to_addGoalBreakdownFragment"
+            app:destination="@id/addGoalBreakdownFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+    </fragment>
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.tms.targetedmoneysaver.ui.home.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
+</navigation>

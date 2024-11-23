@@ -1,5 +1,6 @@
 package com.tms.targetedmoneysaver.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.ActivityHomeBinding
+import com.tms.targetedmoneysaver.ui.add_goal.AddGoalActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -33,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.home_page)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -41,6 +43,8 @@ class HomeActivity : AppCompatActivity() {
 
         binding.fabHome.setOnClickListener {
             // TODO: Add Goal Activity
+            val intent = Intent(this, AddGoalActivity::class.java)
+            startActivity(intent)
         }
 
     }
