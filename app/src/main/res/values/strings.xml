@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Targeted Money Saver</string>
 
+    <string name="add_goal">Add Goal</string>
+
+    <string name="menu_profile_title">Profile</string>
+
     <string name="next">Next</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
@@ -12,6 +16,10 @@
     <string name="invalid_email">Invalid Email</string>
     <string name="invalid_password">Password must be at least 8 characters</string>
     <string name="password_not_match">Password does not match</string>
+
+    <!-- AppBar -->
+    <string name="app_bar_home_title">Home</string>
+
 
     <!-- Description Image Text -->
     <string name="onboarding_image_description">Goal Saving</string>

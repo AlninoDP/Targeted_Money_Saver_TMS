@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputLayout
-import com.tms.targetedmoneysaver.MainActivity
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.ActivityLoginBinding
+import com.tms.targetedmoneysaver.ui.home.HomeActivity
 import com.tms.targetedmoneysaver.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -43,6 +43,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 if (validateInput(email, password)) {
                     // TODO: Login Logic
                 }
+                // TODO: ERASE THIS
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
             }
 
             R.id.btn_google_login -> {
@@ -64,11 +67,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     // Validate email and password
     private fun validateInput(email: String, password: String): Boolean {
-        if (email.isEmpty()) {
-            binding.etLoginEmail.error = getString(R.string.invalid_email)
-            return false
-        }
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.etLoginEmail.error = getString(R.string.invalid_email)
             return false
         }
