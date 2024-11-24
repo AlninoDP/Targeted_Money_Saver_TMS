@@ -19,12 +19,14 @@
 
     <!-- AppBar -->
     <string name="app_bar_home_title">Home</string>
+    <string name="app_bar_add_goal_image_title">Add Goal</string>
 
 
     <!-- Description Image Text -->
     <string name="onboarding_image_description">Goal Saving</string>
     <string name="money_image_description">Money Background</string>
     <string name="google_login_description">Login With Google</string>
+    <string name="chosen_image_description">Image Chosen</string>
 
     <!-- Onboarding Text -->
     <string name="onboarding_Text_1">Reach Your Goal, One Save at a Time</string>
@@ -40,6 +42,12 @@
     <string name="register_page_header_text">Create an Account</string>
     <string name="register_page_sub_header_text">Please register your account!</string>
     <string name="have_account">already have an account?</string>
+
+    <string name="add_goal_image_header_text">Provide the Image For Your Goal</string>
+    <string name="add_goal_button_clear_image">Clear Image</string>
+    <string name="add_goal_button_confirm">Confirm</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

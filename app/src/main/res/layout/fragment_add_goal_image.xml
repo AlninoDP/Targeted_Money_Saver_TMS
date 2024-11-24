@@ -6,26 +6,89 @@
     android:layout_height="match_parent"
     tools:context=".ui.add_goal.fragment.AddGoalImageFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!--  AppBar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_bar_add_goal_image_title"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_add_goal_image_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="goal image"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/add_goal_image_header_text"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+    <ImageView
+        android:id="@+id/img_chosen"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="@string/chosen_image_description"
+        android:scaleType="fitCenter"
+        android:src="@drawable/placeholder_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_add_goal_image_header" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/search_image_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_image_search"
+        app:layout_constraintBottom_toBottomOf="@+id/img_chosen"
+        app:layout_constraintEnd_toEndOf="@+id/img_chosen"
+        app:layout_constraintStart_toStartOf="@+id/img_chosen"
+        app:layout_constraintTop_toTopOf="@+id/img_chosen" />
+
+    <TextView
+        android:id="@+id/add_goal_btn_clear_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corner_button_red"
+        android:padding="10dp"
+        android:text="@string/add_goal_button_clear_image"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/img_chosen"
+        app:layout_constraintTop_toBottomOf="@+id/img_chosen" />
+
+    <TextView
+        android:id="@+id/add_goal_button_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corner_button_green"
+        android:padding="10dp"
+        android:text="@string/add_goal_button_confirm"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_chosen"
+        app:layout_constraintTop_toBottomOf="@+id/img_chosen" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
