@@ -14,11 +14,12 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.FragmentAddGoalImageBinding
 import com.tms.targetedmoneysaver.ui.add_goal.AddGoalViewModel
+import com.tms.targetedmoneysaver.utils.getImageUri
 
 
 class AddGoalImageFragment : Fragment() {
@@ -26,7 +27,7 @@ class AddGoalImageFragment : Fragment() {
     private var _binding: FragmentAddGoalImageBinding? = null
     private val binding get() = _binding!!
 
-    private val addGoalViewModel: AddGoalViewModel by viewModels()
+    private val addGoalViewModel: AddGoalViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,14 +44,8 @@ class AddGoalImageFragment : Fragment() {
             alertDialogBuilder.setTitle("Pick Image From")
             alertDialogBuilder.setItems(options) { _, which ->
                 when (which) {
-                    0 -> {
-                        // TODO: TAKE PHOTO
-
-                    }
-
-                    1 -> {
-                        startGallery()
-                    }
+                    0 -> startCamera()
+                    1 -> startGallery()
                 }
             }
             alertDialogBuilder.show()
@@ -66,15 +61,27 @@ class AddGoalImageFragment : Fragment() {
             binding.imgChosen.setImageResource(R.drawable.placeholder_image)
             binding.searchImageIcon.visibility = View.VISIBLE
         }
-
-
-
         return binding.root
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    // Camera
+    private fun startCamera() {
+        addGoalViewModel.setImageUri(getImageUri(requireContext()))
+        launcherIntentCamera.launch(addGoalViewModel.getImageUri())
+    }
+
+    private val launcherIntentCamera = registerForActivityResult(
+        ActivityResultContracts.TakePicture()
+    ) { isSuccess ->
+        if (isSuccess) {
+            showImage()
+        }
     }
 
     // Gallery

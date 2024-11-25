@@ -36,6 +36,11 @@
             app:destination="@id/addGoalBreakdownFragment"
             app:enterAnim="@anim/anim_slide_in_right"
             app:popEnterAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_addGoalPeriodFragment_to_addGoalImageFragment"
+            app:destination="@id/addGoalImageFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
     <activity
         android:id="@+id/homeActivity"
