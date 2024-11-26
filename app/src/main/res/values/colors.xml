@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="crimson_red">#DC143C</color>
+    <color name="pristine_white">#F5F5F5</color>
 
     <color name="primary">#2E628C</color>
     <color name="onPrimary">#FAFAFA</color>

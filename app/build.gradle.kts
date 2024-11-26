@@ -56,12 +56,14 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
+    implementation(libs.androidx.core.splashscreen)
+
     // Viewpager2
     implementation(libs.androidx.viewpager2)
 
 
     // Indicator for Viewpager2
     implementation(libs.dotsindicator)
-    implementation ("com.github.GrenderG:Toasty:1.5.2")
+    implementation (libs.toasty)
 
 }
