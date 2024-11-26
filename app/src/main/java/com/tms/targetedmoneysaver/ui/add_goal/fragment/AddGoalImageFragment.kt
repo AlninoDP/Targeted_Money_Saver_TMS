@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -20,6 +21,7 @@ import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.FragmentAddGoalImageBinding
 import com.tms.targetedmoneysaver.ui.add_goal.AddGoalViewModel
 import com.tms.targetedmoneysaver.utils.getImageUri
+import es.dmoral.toasty.Toasty
 
 
 class AddGoalImageFragment : Fragment() {
@@ -56,7 +58,7 @@ class AddGoalImageFragment : Fragment() {
             addGoalViewModel.getImageUri()?.let {
                 findNavController().navigate(R.id.action_addGoalImageFragment_to_addGoalPeriodFragment)
 
-            } ?: showToast("Please select an image")
+            } ?: Toasty.error(requireContext(), "Please select an image", Toast.LENGTH_SHORT).show()
         }
 
         binding.addGoalBtnClearImage.setOnClickListener {
@@ -84,6 +86,11 @@ class AddGoalImageFragment : Fragment() {
     ) { isSuccess ->
         if (isSuccess) {
             showImage()
+        } else {
+            // Reset to placeholder if no image is captured
+            addGoalViewModel.setImageUri(null)
+            binding.imgChosen.setImageResource(R.drawable.placeholder_image)
+            binding.searchImageIcon.visibility = View.VISIBLE
         }
     }
 
@@ -111,10 +118,6 @@ class AddGoalImageFragment : Fragment() {
 
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
-
     /// Request Permission
     private fun requestPermissionsIfNeeded() {
         if (!allPermissionGranted()) {
@@ -131,7 +134,7 @@ class AddGoalImageFragment : Fragment() {
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             val message = if (isGranted) "Permission Granted" else "Permission Denied"
-            showToast(message)
+            Toasty.info(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
 
     companion object {

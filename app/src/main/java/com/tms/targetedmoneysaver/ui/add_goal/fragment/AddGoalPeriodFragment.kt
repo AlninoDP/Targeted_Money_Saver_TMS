@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.FragmentAddGoalPeriodBinding
 import com.tms.targetedmoneysaver.ui.add_goal.AddGoalViewModel
+import es.dmoral.toasty.Toasty
 
 class AddGoalPeriodFragment : Fragment() {
 
@@ -55,7 +56,7 @@ class AddGoalPeriodFragment : Fragment() {
                 // TODO: GET THE ITEM PRICE AND DIVIDE IT BY THE TOTAL DAYS
                 addGoalViewModel.getSliderValue()?.let {
                     findNavController().navigate(R.id.action_addGoalPeriodFragment_to_addGoalBreakdownFragment)
-                } ?: Toast.makeText(requireContext(), "Set Your Goal Period!", Toast.LENGTH_SHORT)
+                } ?: Toasty.error(requireContext(), "Set Your Goal Period!", Toast.LENGTH_SHORT)
                     .show()
             }
 

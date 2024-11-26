@@ -62,5 +62,6 @@ dependencies {
 
     // Indicator for Viewpager2
     implementation(libs.dotsindicator)
+    implementation ("com.github.GrenderG:Toasty:1.5.2")
 
 }
