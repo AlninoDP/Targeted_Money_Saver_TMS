@@ -53,7 +53,10 @@ class AddGoalImageFragment : Fragment() {
 
         binding.addGoalButtonConfirm.setOnClickListener {
             // TODO: SEND IMAGE TO ANALYZE AND GET PREDICTION
-            findNavController().navigate(R.id.action_addGoalImageFragment_to_addGoalPeriodFragment)
+            addGoalViewModel.getImageUri()?.let {
+                findNavController().navigate(R.id.action_addGoalImageFragment_to_addGoalPeriodFragment)
+
+            } ?: showToast("Please select an image")
         }
 
         binding.addGoalBtnClearImage.setOnClickListener {
