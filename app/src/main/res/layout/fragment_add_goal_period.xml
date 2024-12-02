@@ -48,7 +48,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/add_goal_item_name_label"
+        android:text="@string/goal_item_name_label"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="@+id/addGoal_tv_item_label_name"
         app:layout_constraintStart_toStartOf="@+id/addGoal_tv_item_label_name"
         app:layout_constraintTop_toBottomOf="@+id/addGoal_tv_item_label_name"
-        tools:text="@string/add_goal_item_name_text" />
+        tools:text="@string/goal_item_name_text" />
 
     <!-- Label Price -->
     <TextView
@@ -78,7 +78,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/add_goal_item_price_label"
+        android:text="@string/goal_item_price_label"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="@+id/addGoal_tv_item_label_price"
         app:layout_constraintStart_toStartOf="@+id/addGoal_tv_item_label_price"
         app:layout_constraintTop_toBottomOf="@+id/addGoal_tv_item_label_price"
-        tools:text="@string/add_goal_item_price_text" />
+        tools:text="@string/goal_item_price_text" />
 
     <!-- Period Label Text -->
     <TextView
@@ -108,7 +108,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:labelFor="@+id/addGoal_period_slider"
-        android:text="@string/add_goal_period"
+        android:text="@string/goal_period_period"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +135,7 @@
             android:background="@drawable/rounded_corner_button_primary"
             android:gravity="center"
             android:padding="12dp"
-            android:text="@string/add_goal_add_one_week"
+            android:text="@string/goal_period_add_one_week"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -148,7 +148,7 @@
             android:background="@drawable/rounded_corner_button_primary"
             android:gravity="center"
             android:padding="12dp"
-            android:text="@string/add_goal_add_one_month"
+            android:text="@string/goal_period_add_one_month"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -187,7 +187,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addGoal_period_slider"
-        tools:text="@string/add_goal_total_days" />
+        tools:text="@string/goal_period_total_days" />
 
     <!-- Button Get Back -->
     <TextView
@@ -199,7 +199,7 @@
         android:background="@drawable/rounded_corner_button_primary"
         android:elevation="4dp"
         android:padding="12dp"
-        android:text="@string/add_goal_next_steps"
+        android:text="@string/goal_period_next_steps"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -215,7 +215,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner_button_primary"
         android:padding="12dp"
-        android:text="@string/add_goal_go_back"
+        android:text="@string/goal_period_go_back"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"

@@ -44,20 +44,25 @@
 
     <!-- Add Goal Text -->
     <string name="add_goal">Add Goal</string>
-    <string name="add_goal_image_header_text">Provide the Image For Your Goal</string>
-    <string name="add_goal_button_clear_image">Clear Image</string>
-    <string name="add_goal_button_confirm">Confirm</string>
-    <string name="add_goal_item_name_label">Name</string>
-    <string name="add_goal_item_name_text">Item Name</string>
-    <string name="add_goal_item_price_label">Price</string>
-    <string name="add_goal_item_price_text">Item Price</string>
-    <string name="add_goal_period">How Many Days Do You Want To Achieve This Goal?</string>
-    <string name="add_goal_total_days">%.0f Days</string>
-    <string name="add_goal_next_steps">Next Steps</string>
-    <string name="add_goal_go_back">Go Back</string>
-    <string name="add_goal_add_one_week">1 Week</string>
-    <string name="add_goal_add_one_month">1 Month</string>
+    <string name="goal_item_name_label">Name</string>
+    <string name="goal_item_name_text">Item Name</string>
+    <string name="goal_item_price_label">Price</string>
+    <string name="goal_item_price_text">Item Price</string>
 
+    <!-- Add Goal Image Text -->
+    <string name="add_goal_image_header_text">Provide the Image For Your Goal</string>
+    <string name="add_goal_image_button_clear_image">Clear Image</string>
+    <string name="add_goal_image_button_confirm">Confirm</string>
+
+    <!-- Goal Period Text -->
+    <string name="goal_period_period">How Many Days Do You Want To Achieve This Goal?</string>
+    <string name="goal_period_total_days">%.0f Days</string>
+    <string name="goal_period_next_steps">Next Steps</string>
+    <string name="goal_period_go_back">Go Back</string>
+    <string name="goal_period_add_one_week">1 Week</string>
+    <string name="goal_period_add_one_month">1 Month</string>
+
+    <!-- Goal Breakdown Text -->
     <string name="goal_breakdown_header_text">Here is Breakdown of Your Goal:</string>
     <string name="goal_breakdown_date_started_label">Date Started: </string>
     <string name="goal_breakdown_date_started_text">20/11/2024</string>

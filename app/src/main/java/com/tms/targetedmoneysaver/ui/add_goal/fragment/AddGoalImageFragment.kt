@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -55,7 +54,7 @@ class AddGoalImageFragment : Fragment() {
 
         binding.addGoalButtonConfirm.setOnClickListener {
             // TODO: SEND IMAGE TO ANALYZE AND GET PREDICTION
-            addGoalViewModel.getImageUri()?.let {
+            addGoalViewModel.imageUri.value?.let {
                 findNavController().navigate(R.id.action_addGoalImageFragment_to_addGoalPeriodFragment)
 
             } ?: Toasty.error(requireContext(), "Please select an image", Toast.LENGTH_SHORT).show()
@@ -78,7 +77,9 @@ class AddGoalImageFragment : Fragment() {
     // Camera
     private fun startCamera() {
         addGoalViewModel.setImageUri(getImageUri(requireContext()))
-        launcherIntentCamera.launch(addGoalViewModel.getImageUri())
+        addGoalViewModel.imageUri.value?.let { launcherIntentCamera.launch(it) } ?: {
+            Toasty.error(requireContext(), "Uh Oh Something Went Wrong", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private val launcherIntentCamera = registerForActivityResult(

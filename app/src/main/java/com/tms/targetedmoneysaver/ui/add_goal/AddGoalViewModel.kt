@@ -64,9 +64,6 @@ class AddGoalViewModel : ViewModel() {
         _imageUri.value = uri
     }
 
-    fun getImageUri(): Uri? = _imageUri.value
-    fun getSliderValue(): Float? = _periodSliderValue.value
-
     fun setPeriodSliderValue(value: Float){
         _periodSliderValue.value = value
     }

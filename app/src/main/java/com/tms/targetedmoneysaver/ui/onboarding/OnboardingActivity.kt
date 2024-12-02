@@ -21,7 +21,7 @@ class OnboardingActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen = installSplashScreen()
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityOnboardingBinding.inflate(layoutInflater)

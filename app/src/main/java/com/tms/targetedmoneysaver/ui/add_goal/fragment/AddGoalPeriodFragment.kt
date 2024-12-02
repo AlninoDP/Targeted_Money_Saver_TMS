@@ -28,15 +28,13 @@ class AddGoalPeriodFragment : Fragment() {
         _binding = FragmentAddGoalPeriodBinding.inflate(inflater, container, false)
 
         addGoalViewModel.periodSliderValue.observe(viewLifecycleOwner) {
-            binding.addGoalTvTotalDays.text = getString(R.string.add_goal_total_days, it)
+            binding.addGoalTvTotalDays.text = getString(R.string.goal_period_total_days, it)
         }
         addGoalViewModel.imageUri.observe(viewLifecycleOwner) { uri ->
             uri?.let {
                 binding.addGoalImageChosen.setImageURI(it)
             }
         }
-
-//        binding.addGoalImageChosen.setImageURI(addGoalViewModel.getImageUri())
 
         binding.apply {
 
@@ -54,18 +52,17 @@ class AddGoalPeriodFragment : Fragment() {
             }
             addGoalBtnNextSteps.setOnClickListener {
                 // TODO: GET THE ITEM PRICE AND DIVIDE IT BY THE TOTAL DAYS
-                addGoalViewModel.getSliderValue()?.let {
+                addGoalViewModel.periodSliderValue.value?.let {
                     findNavController().navigate(R.id.action_addGoalPeriodFragment_to_addGoalBreakdownFragment)
                 } ?: Toasty.error(requireContext(), "Set Your Goal Period!", Toast.LENGTH_SHORT)
                     .show()
+
             }
 
             addGoalBtnGoBack.setOnClickListener {
                 findNavController().navigate(R.id.action_addGoalPeriodFragment_to_addGoalImageFragment)
             }
         }
-
-
 
         return binding.root
     }

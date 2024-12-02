@@ -24,7 +24,7 @@ class AddGoalBreakdownFragment : Fragment() {
     ): View {
         _binding = FragmentAddGoalBreakdownBinding.inflate(inflater, container, false)
 
-        binding.goalBreakdownImageChosen.setImageURI(addGoalViewModel.getImageUri())
+        binding.goalBreakdownImageChosen.setImageURI(addGoalViewModel.imageUri.value)
 
         addGoalViewModel.dateStarted.observe(requireActivity()){
             binding.goalBreakdownTvDateStarted.text = it
