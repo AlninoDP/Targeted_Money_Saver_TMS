@@ -11,6 +11,7 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="continue_with">or continue with</string>
+    <string name="add_goal_button_text">Add Goal</string>
 
     <string name="invalid_email">Invalid Email</string>
     <string name="invalid_password">Password must be at least 8 characters</string>
@@ -18,14 +19,27 @@
 
     <!-- AppBar -->
     <string name="app_bar_home_title">Home</string>
+    <string name="app_bar_goals_title">Your Goals</string>
     <string name="app_bar_add_goal_image_title">Add Goal</string>
+
+    <!-- Bottom Nav Bar -->
+    <string name="btm_nav_home">Home</string>
+    <string name="btm_nav_your_goal">Goals</string>
+    <string name="btm_nav_profile">Profile</string>
 
 
     <!-- Description Image Text -->
+    <string name="application_logo_description">TMS Logo</string>
     <string name="onboarding_image_description">Goal Saving</string>
     <string name="money_image_description">Money Background</string>
     <string name="google_login_description">Login With Google</string>
     <string name="chosen_image_description">Image Chosen</string>
+    <string name="menu_image_description">Profile Image</string>
+
+    <!-- Home Page Text -->
+    <string name="home_header_text">Welcome Back !</string>
+    <string name="home_sub_header_text">Your Closest Goal</string>
+    <string name="home_sub_sub_header_text">Your Recent Goals</string>
 
     <!-- Onboarding Text -->
     <string name="onboarding_Text_1">Reach Your Goal, One Save at a Time</string>
@@ -71,8 +85,8 @@
     <string name="goal_breakdown_daily_saving_label">Daily Saving Amount: </string>
     <string name="goal_breakdown_daily_saving_text">Rp. %i</string>
     <string name="goal_breakdown_start_saving">Start Saving</string>
-
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
