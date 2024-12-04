@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -38,6 +39,7 @@ class AddGoalImageFragment : Fragment() {
 
         requestPermissionsIfNeeded()
         showImage()
+        setUpAppBar()
 
         binding.searchImageIcon.setOnClickListener {
             val options = arrayOf("Take Photo", "Choose from Gallery")
@@ -137,6 +139,22 @@ class AddGoalImageFragment : Fragment() {
             val message = if (isGranted) "Permission Granted" else "Permission Denied"
             Toasty.info(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
+
+    private fun setUpAppBar() {
+        (requireActivity() as AppCompatActivity).apply {
+            setSupportActionBar(binding.topAppBar)
+            supportActionBar?.apply {
+                setDisplayShowTitleEnabled(false)
+                setDisplayHomeAsUpEnabled(true)
+            }
+        }
+        binding.topAppBar.navigationIcon?.setTint(
+            ContextCompat.getColor(requireContext(), R.color.white)
+        )
+        binding.topAppBar.setNavigationOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+    }
 
     companion object {
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA

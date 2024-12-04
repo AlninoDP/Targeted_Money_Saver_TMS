@@ -5,8 +5,9 @@
     <color name="crimson_red">#DC143C</color>
     <color name="pristine_white">#F5F5F5</color>
     <color name="light_grey">#708090</color>
+    <color name="pastel_blue">#D7E9F7</color>
 
-    <color name="primary">#2E628C</color>
+    <color name="primary">#0A192F</color>
     <color name="onPrimary">#FAFAFA</color>
     <color name="secondary">#006A6A</color>
     <color name="onSecondary">#FAFAFA</color>

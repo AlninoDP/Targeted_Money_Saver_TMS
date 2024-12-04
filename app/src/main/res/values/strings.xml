@@ -11,8 +11,9 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="continue_with">or continue with</string>
-    <string name="add_goal_button_text">Add Goal</string>
+    <string name="add_goal_button_text">New Goal</string>
 
+    <!-- Email and Password Confirmation Text -->
     <string name="invalid_email">Invalid Email</string>
     <string name="invalid_password">Password must be at least 8 characters</string>
     <string name="password_not_match">Password does not match</string>
@@ -34,7 +35,11 @@
     <string name="money_image_description">Money Background</string>
     <string name="google_login_description">Login With Google</string>
     <string name="chosen_image_description">Image Chosen</string>
+    <string name="closest_goal_image_description">Closest Goal Image</string>
+    <string name="empty_image_description">Empty Image</string>
     <string name="menu_image_description">Profile Image</string>
+    <string name="menu_setting_description">Go To Settings</string>
+    <string name="mgoal_image_description">Go To Settings</string>
 
     <!-- Home Page Text -->
     <string name="home_header_text">Welcome Back !</string>
@@ -85,6 +90,18 @@
     <string name="goal_breakdown_daily_saving_label">Daily Saving Amount: </string>
     <string name="goal_breakdown_daily_saving_text">Rp. %i</string>
     <string name="goal_breakdown_start_saving">Start Saving</string>
+
+    <string name="total_days_saved_label">Total Days Saved :</string>
+    <string name="total_days_saved">%i Days</string>
+    <string name="total_money_saved_label">Total Money Saved :</string>
+    <string name="total_money_saved">Rp. %i</string>
+    <string name="remaining_days_label">Remaining Days :</string>
+    <string name="remaining_days">%i Days</string>
+
+    <string name="empty_goal_data">Uh oh, you do not have any goals that can be displayed right now, try adding a new goals</string>
+
+    <string name="goal_quote_1">Almost there, keep it up</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

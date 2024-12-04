@@ -1,121 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeActivity">
 
-    <!--  AppBar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/top_app_bar"
-        android:layout_width="match_parent"
-        android:background="@color/primary"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
 
-        <TextView
-            android:id="@+id/app_bar_title"
-            android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--  AppBar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/top_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:contentDescription="@string/application_logo_description"
+                android:src="@drawable/logo_w_text_variance_3" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/menu_setting_description"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_settings"
+                app:tint="@color/white" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- Empty Goal Layout -->
+        <include
+            android:id="@+id/empty_goal_data"
+            layout="@layout/empty_goal_data"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:textSize="24sp"
-            android:textColor="@color/white"
-            android:text="@string/app_name"/>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_recent_goal" />
 
-    </androidx.appcompat.widget.Toolbar>
+        <!-- Header Text -->
+        <TextView
+            android:id="@+id/home_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/home_header_text"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/top_app_bar" />
 
-    <!-- Background -->
-    <!--    <View-->
-    <!--        android:id="@+id/top_background"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="150dp"-->
-    <!--        android:background="@color/primary"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent" />-->
+        <!-- Closest Goal Text -->
+        <TextView
+            android:id="@+id/home_sub_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/home_sub_header_text"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_header" />
 
-    <!-- Header Text -->
-    <TextView
-        android:id="@+id/home_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/home_header_text"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_app_bar" />
+        <!-- Closest Goal Image -->
+        <ImageView
+            android:id="@+id/closest_goal_item"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/goal_breakdown_start_saving"
+            android:scaleType="fitCenter"
+            android:src="@drawable/onboarding_image_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_sub_header" />
 
-    <TextView
-        android:id="@+id/home_sub_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/home_sub_header_text"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_header" />
+        <!-- Closest Goal Image Details -->
+        <LinearLayout
+            android:id="@+id/closest_goal_image_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_corner_container"
+            android:orientation="vertical"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/closest_goal_item"
+            app:layout_constraintStart_toStartOf="@+id/closest_goal_item"
+            app:layout_constraintTop_toBottomOf="@+id/closest_goal_item">
 
-    <!-- RecyclerView Closest Goal -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_closest_goal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_sub_header"  />
+            <!-- Closest Goal Item Name -->
+            <TextView
+                android:id="@+id/closest_goal_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/goal_item_name_text"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-    <!-- SubHeader Text -->
-    <TextView
-        android:id="@+id/home_sub_sub_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/home_sub_sub_header_text"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_closest_goal" />
+            <!-- Closest Goal Total Days Saved Row  -->
+            <LinearLayout
+                android:id="@+id/row_total_days_saved"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal">
 
-    <!-- RecyclerView Closest Goal -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_recent_goal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_sub_sub_header"  />
+                <TextView
+                    android:id="@+id/home_total_days_saved_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:drawablePadding="4dp"
+                    android:text="@string/total_days_saved_label"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/ic_calendar"
+                    app:drawableTint="@color/secondary" />
 
-    <!-- FAB -->
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/primary"
-        android:text="@string/add_goal_button_text"
-        android:textColor="@color/white"
-        app:icon="@drawable/ic_add"
-        app:iconTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+                <TextView
+                    android:id="@+id/home_total_days_saved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/total_days_saved"
+                    android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <!-- Closest Goal Total Money Saved Row  -->
+            <LinearLayout
+                android:id="@+id/row_total_money_saved"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/home_total_money_saved_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:drawablePadding="4dp"
+                    android:text="@string/total_money_saved_label"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/ic_money_bag"
+                    app:drawableTint="@color/secondary" />
+
+                <TextView
+                    android:id="@+id/home_total_money_saved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/total_money_saved"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Closest Goal Remaining Days Row  -->
+            <LinearLayout
+                android:id="@+id/row_remaining_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/home_remaining_days_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:drawablePadding="4dp"
+                    android:text="@string/remaining_days_label"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/ic_remaining_days"
+                    app:drawableTint="@color/secondary" />
+
+                <TextView
+                    android:id="@+id/home_remaining_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/remaining_days"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- SubHeader Text -->
+        <TextView
+            android:id="@+id/home_sub_sub_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/home_sub_sub_header_text"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/closest_goal_image_detail" />
+
+        <!-- RecyclerView Closest Goal -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recent_goal"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_sub_sub_header" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

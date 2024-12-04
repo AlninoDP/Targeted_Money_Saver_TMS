@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
@@ -23,6 +25,7 @@ class AddGoalBreakdownFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddGoalBreakdownBinding.inflate(inflater, container, false)
+        setUpAppBar()
 
         binding.goalBreakdownImageChosen.setImageURI(addGoalViewModel.imageUri.value)
 
@@ -51,5 +54,21 @@ class AddGoalBreakdownFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun setUpAppBar() {
+        (requireActivity() as AppCompatActivity).apply {
+            setSupportActionBar(binding.topAppBar)
+            supportActionBar?.apply {
+                setDisplayShowTitleEnabled(false)
+                setDisplayHomeAsUpEnabled(true)
+            }
+        }
+        binding.topAppBar.navigationIcon?.setTint(
+            ContextCompat.getColor(requireContext(), R.color.white)
+        )
+        binding.topAppBar.setNavigationOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
     }
 }

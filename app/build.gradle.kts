@@ -66,4 +66,6 @@ dependencies {
     implementation(libs.dotsindicator)
     implementation (libs.toasty)
 
+    implementation(libs.roundedprogressbar)
+
 }

@@ -21,10 +21,7 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        binding.fabHome.setOnClickListener {
-            val intent = Intent(requireContext(), AddGoalActivity::class.java)
-            startActivity(intent)
-        }
+
 
         return binding.root
     }

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
@@ -26,6 +28,7 @@ class AddGoalPeriodFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddGoalPeriodBinding.inflate(inflater, container, false)
+        setUpAppBar()
 
         addGoalViewModel.periodSliderValue.observe(viewLifecycleOwner) {
             binding.addGoalTvTotalDays.text = getString(R.string.goal_period_total_days, it)
@@ -59,9 +62,6 @@ class AddGoalPeriodFragment : Fragment() {
 
             }
 
-            addGoalBtnGoBack.setOnClickListener {
-                findNavController().navigate(R.id.action_addGoalPeriodFragment_to_addGoalImageFragment)
-            }
         }
 
         return binding.root
@@ -70,6 +70,22 @@ class AddGoalPeriodFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun setUpAppBar() {
+        (requireActivity() as AppCompatActivity).apply {
+            setSupportActionBar(binding.topAppBar)
+            supportActionBar?.apply {
+                setDisplayShowTitleEnabled(false)
+                setDisplayHomeAsUpEnabled(true)
+            }
+        }
+        binding.topAppBar.navigationIcon?.setTint(
+            ContextCompat.getColor(requireContext(), R.color.white)
+        )
+        binding.topAppBar.setNavigationOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
     }
 
 
