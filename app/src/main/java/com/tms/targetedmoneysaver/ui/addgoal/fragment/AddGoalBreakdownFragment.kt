@@ -1,4 +1,4 @@
-package com.tms.targetedmoneysaver.ui.add_goal.fragment
+package com.tms.targetedmoneysaver.ui.addgoal.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.FragmentAddGoalBreakdownBinding
-import com.tms.targetedmoneysaver.ui.add_goal.AddGoalViewModel
+import com.tms.targetedmoneysaver.ui.addgoal.AddGoalViewModel
 
 
 class AddGoalBreakdownFragment : Fragment() {

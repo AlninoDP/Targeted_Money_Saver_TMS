@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.add_goal.fragment.AddGoalPeriodFragment">
+    tools:context=".ui.addgoal.fragment.AddGoalPeriodFragment">
 
     <!--  AppBar -->
     <androidx.appcompat.widget.Toolbar
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/app_bar_add_goal_image_title"
+            android:text="@string/app_bar_add_goal_title"
             android:textColor="@color/white"
             android:textSize="25sp" />
     </androidx.appcompat.widget.Toolbar>

@@ -5,7 +5,7 @@
     android:id="@+id/add_goal_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.add_goal.AddGoalActivity">
+    tools:context=".ui.addgoal.AddGoalActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_add_goal_fragment"

@@ -7,4 +7,315 @@
     android:layout_height="match_parent"
     tools:context=".ui.goaldetails.GoalDetailsActivity">
 
+    <!--  AppBar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_bar_goal_detail_title"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!--  Goal Progress Text -->
+    <TextView
+        android:id="@+id/goal_detail_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/goal_detail_header_text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar" />
+
+    <!--  Progress Arc -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/goal_progress_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="@color/pristine_white"
+        app:contentPadding="16dp"
+        app:layout_constraintStart_toStartOf="@+id/goal_detail_header"
+        app:layout_constraintTop_toBottomOf="@+id/goal_detail_header"
+        app:strokeWidth="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                android:id="@+id/goal_detail_days_progress_bar"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                app:cpb_background_progressbar_width="12dp"
+                app:cpb_background_progressbar_color="@color/primary"
+                app:cpb_progress="6"
+                app:cpb_progress_max="30"
+                app:cpb_progressbar_color="@color/secondary"
+                app:cpb_start_angle="270"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/goal_detail_arc_progress_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/goal_detail_progress_text"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Goal Progress Arc Detail-->
+    <LinearLayout
+        android:id="@+id/goal_progress_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/goal_detail_header"
+        app:layout_constraintStart_toEndOf="@+id/goal_progress_card"
+        app:layout_constraintTop_toTopOf="@+id/goal_progress_card">
+
+        <TextView
+            android:id="@+id/goal_detail_days_saved"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:drawablePadding="4dp"
+            android:text="@string/goal_detail_total_days_saved"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_calendar" />
+
+        <TextView
+            android:id="@+id/goal_detail_money_saved"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:drawablePadding="4dp"
+            android:text="@string/goal_detail_total_money_saved"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_money_bag" />
+
+        <TextView
+            android:id="@+id/goal_detail_remaining_days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:drawablePadding="4dp"
+            android:text="@string/goal_detail_remaining_days"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_remaining_days" />
+    </LinearLayout>
+
+    <!--  Goal Detail -->
+    <TextView
+        android:id="@+id/goal_detail_sub_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/goal_detail_sub_header_text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goal_progress_card" />
+
+    <ImageView
+        android:id="@+id/goal_detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/goal_image_description"
+        android:scaleType="fitCenter"
+        android:src="@drawable/item_placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goal_detail_sub_header" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/goal_detail_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="@color/pristine_white"
+        app:contentPadding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goal_detail_image"
+        app:strokeWidth="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Item Name Label -->
+            <TextView
+                android:id="@+id/goal_detail_item_name_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/goal_detail_item_name_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Item Name -->
+            <TextView
+                android:id="@+id/goal_detail_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/goal_detail_item_name"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/goal_detail_item_name_label"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_name_label" />
+
+            <!-- Item Price Label -->
+            <TextView
+                android:id="@+id/goal_detail_item_price_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/goal_detail_item_price_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_name" />
+
+            <!-- Item Price -->
+            <TextView
+                android:id="@+id/goal_detail_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/goal_item_price_text"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/goal_detail_item_price_label"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_name" />
+
+
+            <!-- Item Date Started Label -->
+            <TextView
+                android:id="@+id/goal_detail_date_started_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/goal_detail_date_started_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_price" />
+
+            <!-- Item Date Started -->
+            <TextView
+                android:id="@+id/goal_detail_item_date_started"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/goal_detail_date_started"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/goal_detail_date_started_label"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_price" />
+
+            <!-- Item Date Completion Label -->
+            <TextView
+                android:id="@+id/goal_detail_date_completion_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/goal_detail_date_finish_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_date_started" />
+
+            <!-- Item Date Completion -->
+            <TextView
+                android:id="@+id/goal_detail_item_date_completion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/goal_detail_date_finish"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/goal_detail_date_completion_label"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_date_started" />
+
+
+            <!-- Item Daily Saving Label -->
+            <TextView
+                android:id="@+id/goal_detail_daily_saving_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/goal_detail_daily_saving_amount_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_date_completion" />
+
+            <!-- Item Daily Saving -->
+            <TextView
+                android:id="@+id/goal_detail_item_daily_saving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/goal_detail_daily_saving_amount"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/goal_detail_daily_saving_label"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_date_completion" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/goal_detail_button_save_today"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

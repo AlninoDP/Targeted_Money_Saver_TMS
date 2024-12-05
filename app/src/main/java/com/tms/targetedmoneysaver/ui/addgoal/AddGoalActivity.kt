@@ -1,4 +1,4 @@
-package com.tms.targetedmoneysaver.ui.add_goal
+package com.tms.targetedmoneysaver.ui.addgoal
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -9,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.tms.targetedmoneysaver"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -64,8 +65,9 @@ dependencies {
 
     // Indicator for Viewpager2
     implementation(libs.dotsindicator)
-    implementation (libs.toasty)
+    implementation(libs.toasty)
 
     implementation(libs.roundedprogressbar)
+    implementation(libs.circularprogressbar)
 
 }

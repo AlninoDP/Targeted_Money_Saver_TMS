@@ -1,4 +1,4 @@
-package com.tms.targetedmoneysaver.ui.add_goal
+package com.tms.targetedmoneysaver.ui.addgoal
 
 import android.net.Uri
 import androidx.lifecycle.LiveData

@@ -1,4 +1,4 @@
-package com.tms.targetedmoneysaver.ui.add_goal.fragment
+package com.tms.targetedmoneysaver.ui.addgoal.fragment
 
 import android.Manifest
 import android.app.AlertDialog
@@ -19,7 +19,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.FragmentAddGoalImageBinding
-import com.tms.targetedmoneysaver.ui.add_goal.AddGoalViewModel
+import com.tms.targetedmoneysaver.ui.addgoal.AddGoalViewModel
 import com.tms.targetedmoneysaver.utils.getImageUri
 import es.dmoral.toasty.Toasty
 

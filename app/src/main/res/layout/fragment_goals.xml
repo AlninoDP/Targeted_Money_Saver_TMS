@@ -34,11 +34,22 @@
             app:tint="@color/white" />
     </androidx.appcompat.widget.Toolbar>
 
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/goals_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <!-- Empty Goal Layout -->
     <include
         android:id="@+id/empty_goal_data"
         layout="@layout/empty_goal_data"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
@@ -48,6 +59,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_goals"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"

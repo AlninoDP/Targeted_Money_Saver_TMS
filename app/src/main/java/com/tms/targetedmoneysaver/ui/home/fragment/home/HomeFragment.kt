@@ -1,13 +1,11 @@
 package com.tms.targetedmoneysaver.ui.home.fragment.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.tms.targetedmoneysaver.databinding.FragmentHomeBinding
-import com.tms.targetedmoneysaver.ui.add_goal.AddGoalActivity
 
 class HomeFragment : Fragment() {
 

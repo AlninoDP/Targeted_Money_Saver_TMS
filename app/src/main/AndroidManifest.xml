@@ -23,7 +23,7 @@
             android:name=".ui.goaldetails.GoalDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.add_goal.AddGoalActivity"
+            android:name=".ui.addgoal.AddGoalActivity"
             android:exported="false" />
         <activity
             android:name=".ui.home.HomeActivity"

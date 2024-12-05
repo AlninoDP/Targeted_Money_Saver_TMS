@@ -21,7 +21,8 @@
     <!-- AppBar -->
     <string name="app_bar_home_title">Home</string>
     <string name="app_bar_goals_title">Your Goals</string>
-    <string name="app_bar_add_goal_image_title">Add Goal</string>
+    <string name="app_bar_add_goal_title">Add Goal</string>
+    <string name="app_bar_goal_detail_title">Goal Detail</string>
 
     <!-- Bottom Nav Bar -->
     <string name="btm_nav_home">Home</string>
@@ -39,7 +40,7 @@
     <string name="empty_image_description">Empty Image</string>
     <string name="menu_image_description">Profile Image</string>
     <string name="menu_setting_description">Go To Settings</string>
-    <string name="mgoal_image_description">Go To Settings</string>
+    <string name="goal_image_description">Goal Image</string>
 
     <!-- Home Page Text -->
     <string name="home_header_text">Welcome Back !</string>
@@ -88,15 +89,35 @@
     <string name="goal_breakdown_date_finished_label">Date Finished: </string>
     <string name="goal_breakdown_date_finished_text">20/11/2025</string>
     <string name="goal_breakdown_daily_saving_label">Daily Saving Amount: </string>
-    <string name="goal_breakdown_daily_saving_text">Rp. %i</string>
+    <string name="goal_breakdown_daily_saving_text">Rp. %d</string>
     <string name="goal_breakdown_start_saving">Start Saving</string>
 
     <string name="total_days_saved_label">Total Days Saved :</string>
-    <string name="total_days_saved">%i Days</string>
+    <string name="total_days_saved">%d Days</string>
     <string name="total_money_saved_label">Total Money Saved :</string>
-    <string name="total_money_saved">Rp. %i</string>
+    <string name="total_money_saved">Rp. %d</string>
     <string name="remaining_days_label">Remaining Days :</string>
-    <string name="remaining_days">%i Days</string>
+    <string name="remaining_days">%d Days</string>
+
+    <!-- Goal Details Text -->
+    <string name="goal_detail_header_text">Goal Progress</string>
+    <string name="goal_detail_sub_header_text">Goal Detail</string>
+    <string name="goal_detail_progress_text">%1$d / %2$d\nDays</string>
+    <string name="goal_detail_total_days_saved">Days Saved: %d</string>
+    <string name="goal_detail_total_money_saved">Money Saved: Rp.%d</string>
+    <string name="goal_detail_remaining_days">Remaining Days: %d</string>
+    <string name="goal_detail_item_name_label">Name</string>
+    <string name="goal_detail_item_name">Item Name</string>
+    <string name="goal_detail_item_price_label">Price</string>
+    <string name="goal_detail_item_price">Rp. %d</string>
+    <string name="goal_detail_date_started_label">Date Started</string>
+    <string name="goal_detail_date_started">4/12/2024</string>
+    <string name="goal_detail_date_finish_label">Estimation Completion Date</string>
+    <string name="goal_detail_date_finish">1/1/2025</string>
+    <string name="goal_detail_daily_saving_amount_label">Daily Saving Amount</string>
+    <string name="goal_detail_daily_saving_amount">Rp. %d</string>
+    <string name="goal_detail_button_save_today">Save Today</string>
+
 
     <string name="empty_goal_data">Uh oh, you do not have any goals that can be displayed right now, try adding a new goals</string>
 

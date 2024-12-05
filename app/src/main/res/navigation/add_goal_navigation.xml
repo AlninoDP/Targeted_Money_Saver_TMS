@@ -6,7 +6,7 @@
     app:startDestination="@id/addGoalImageFragment">
     <fragment
         android:id="@+id/addGoalImageFragment"
-        android:name="com.tms.targetedmoneysaver.ui.add_goal.fragment.AddGoalImageFragment"
+        android:name="com.tms.targetedmoneysaver.ui.addgoal.fragment.AddGoalImageFragment"
         android:label="fragment_add_goal_image"
         tools:layout="@layout/fragment_add_goal_image" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/addGoalBreakdownFragment"
-        android:name="com.tms.targetedmoneysaver.ui.add_goal.fragment.AddGoalBreakdownFragment"
+        android:name="com.tms.targetedmoneysaver.ui.addgoal.fragment.AddGoalBreakdownFragment"
         android:label="fragment_add_goal_breakdown"
         tools:layout="@layout/fragment_add_goal_breakdown" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/addGoalPeriodFragment"
-        android:name="com.tms.targetedmoneysaver.ui.add_goal.fragment.AddGoalPeriodFragment"
+        android:name="com.tms.targetedmoneysaver.ui.addgoal.fragment.AddGoalPeriodFragment"
         android:label="fragment_add_goal_period"
         tools:layout="@layout/fragment_add_goal_period" >
         <action
