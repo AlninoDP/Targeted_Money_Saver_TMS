@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -21,6 +22,10 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+
+        defaultConfig {
+            buildConfigField("String", "BASE_URL", "\"https://targetted-money-saver.et.r.appspot.com/\"")
+        }
     }
 
     buildTypes {
@@ -62,12 +67,25 @@ dependencies {
     // Viewpager2
     implementation(libs.androidx.viewpager2)
 
-
     // Indicator for Viewpager2
     implementation(libs.dotsindicator)
     implementation(libs.toasty)
 
     implementation(libs.roundedprogressbar)
     implementation(libs.circularprogressbar)
+
+    implementation(platform(libs.firebase.bom))
+
+    // Retrofit Core, Retrofit Converter Gson, Okhttp Interceptor (opsional)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+
+    // Coroutines Core dan Coroutines Android
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
+
+    // Glide
+    implementation(libs.glide)
 
 }

@@ -1,6 +1,7 @@
 package com.tms.targetedmoneysaver.ui.addgoal.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,20 +28,24 @@ class AddGoalBreakdownFragment : Fragment() {
         _binding = FragmentAddGoalBreakdownBinding.inflate(inflater, container, false)
         setUpAppBar()
 
-        binding.goalBreakdownImageChosen.setImageURI(addGoalViewModel.imageUri.value)
+        addGoalViewModel.goal.observe(viewLifecycleOwner) { goal ->
+            binding.apply {
+                goalBreakdownTvGoalTitle.text = goal.title
+                goalBreakdownTvGoalDescription.text = goal.description
+                goalBreakdownTvGoalAmount.text = goal.amount
+                goalBreakdownTvDateStarted.text = goal.dateStarted
+                goalBreakdownTvGoalCategory.text = goal.category
+                goalBreakdownTvDailySaving.text = getString(R.string.goal_breakdown_daily_saving_text, goal.dailySavingAmount)
+                goalBreakdownTvGoalPeriod.text = getString(R.string.goal_breakdown_period, goal.period.toInt())
+            }
 
-        addGoalViewModel.dateStarted.observe(requireActivity()){
-            binding.goalBreakdownTvDateStarted.text = it
-        }
-        addGoalViewModel.dateFinished.observe(requireActivity()){
-            binding.goalBreakdownTvDateFinish.text = it
+            goal.imageUri?.let {
+                binding.goalBreakdownImageChosen.setImageURI(it)
+            }
         }
 
 
         binding.apply {
-            goalBreakdownBtnGoBack.setOnClickListener {
-                findNavController().navigate(R.id.action_addGoalBreakdownFragment_to_addGoalPeriodFragment)
-            }
             goalBreakdownBtnStartSaving.setOnClickListener {
                 // TODO: SAVE THE DATA TO SERVER AND NAVIGATE TO HOME
                 findNavController().navigate(R.id.action_addGoalBreakdownFragment_to_homeActivity)

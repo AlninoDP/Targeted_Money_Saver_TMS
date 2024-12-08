@@ -5,7 +5,6 @@ import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -55,20 +54,65 @@ class AddGoalImageFragment : Fragment() {
         }
 
         binding.addGoalButtonConfirm.setOnClickListener {
-            // TODO: SEND IMAGE TO ANALYZE AND GET PREDICTION
-            addGoalViewModel.imageUri.value?.let {
-                findNavController().navigate(R.id.action_addGoalImageFragment_to_addGoalPeriodFragment)
 
-            } ?: Toasty.error(requireContext(), "Please select an image", Toast.LENGTH_SHORT).show()
+            if (isFormValid()) {
+                addGoalViewModel.updateTitle(binding.etGoalTitle.text.toString())
+                addGoalViewModel.updateAmount(binding.etGoalAmount.text.toString())
+                addGoalViewModel.updateDescription(binding.etGoalDescription.text.toString())
+
+                // TODO: SEND INFORMATION TO ANALYZE AND GET CATEGORY PREDICTION
+                addGoalViewModel.goal.value?.imageUri?.let {
+                    findNavController().navigate(R.id.action_addGoalImageFragment_to_addGoalPeriodFragment)
+
+                } ?: Toasty.error(requireContext(), "Please select an image", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
         }
 
         binding.addGoalBtnClearImage.setOnClickListener {
-            addGoalViewModel.setImageUri(null)
-            binding.imgChosen.setImageResource(R.drawable.placeholder_image)
-            binding.searchImageIcon.visibility = View.VISIBLE
+            if (addGoalViewModel.goal.value?.imageUri != null) {
+                addGoalViewModel.updateImageUri(null)
+                binding.imgChosen.setImageResource(R.drawable.placeholder_image)
+                binding.searchImageIcon.visibility = View.VISIBLE
+                Toasty.info(requireContext(), "Image cleared", Toast.LENGTH_SHORT).show()
+            }
         }
         return binding.root
 
+    }
+
+    private fun isFormValid(): Boolean {
+        val goalTitle = binding.etGoalTitle.text.toString()
+        val goalAmount =
+            binding.etGoalAmount.text.toString()
+        val goalDescription =
+            binding.etGoalDescription.text.toString()
+
+        var isValid = true
+
+        if (goalTitle.isEmpty()) {
+            binding.etGoalTitle.error = "Goal title is required"
+            isValid = false
+        } else {
+            binding.etGoalTitle.error = null
+        }
+
+        if (goalAmount.isEmpty()) {
+            binding.etGoalAmount.error = "Goal amount is required"
+            isValid = false
+        } else {
+            binding.etGoalAmount.error = null
+        }
+
+        if (goalDescription.isEmpty()) {
+            binding.etGoalDescription.error = "Goal description is required"
+            isValid = false
+        } else {
+            binding.etGoalDescription.error = null
+        }
+
+        return isValid
     }
 
     override fun onDestroy() {
@@ -78,8 +122,8 @@ class AddGoalImageFragment : Fragment() {
 
     // Camera
     private fun startCamera() {
-        addGoalViewModel.setImageUri(getImageUri(requireContext()))
-        addGoalViewModel.imageUri.value?.let { launcherIntentCamera.launch(it) } ?: {
+        addGoalViewModel.updateImageUri(getImageUri(requireContext()))
+        addGoalViewModel.goal.value?.imageUri?.let { launcherIntentCamera.launch(it) } ?: {
             Toasty.error(requireContext(), "Uh Oh Something Went Wrong", Toast.LENGTH_SHORT).show()
         }
     }
@@ -91,7 +135,7 @@ class AddGoalImageFragment : Fragment() {
             showImage()
         } else {
             // Reset to placeholder if no image is captured
-            addGoalViewModel.setImageUri(null)
+            addGoalViewModel.updateImageUri(null)
             binding.imgChosen.setImageResource(R.drawable.placeholder_image)
             binding.searchImageIcon.visibility = View.VISIBLE
         }
@@ -105,15 +149,13 @@ class AddGoalImageFragment : Fragment() {
     private val launcherGallery =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
             if (uri != null) {
-                addGoalViewModel.setImageUri(uri)
-            } else {
-                Log.d("Photo Picker", "No Media Selected")
+                addGoalViewModel.updateImageUri(uri)
             }
         }
 
     private fun showImage() {
-        addGoalViewModel.imageUri.observe(viewLifecycleOwner) { uri ->
-            uri?.let {
+        addGoalViewModel.goal.observe(viewLifecycleOwner) { goal ->
+            goal?.imageUri?.let {
                 binding.imgChosen.setImageURI(it)
                 binding.searchImageIcon.visibility = View.GONE
             }

@@ -1,77 +1,55 @@
 package com.tms.targetedmoneysaver.ui.addgoal
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.tms.targetedmoneysaver.data.Goal
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 class AddGoalViewModel : ViewModel() {
 
-    // Goal Period
-    private val _periodSliderValue = MutableLiveData<Float?>()
-    val periodSliderValue: LiveData<Float?> get() = _periodSliderValue
+    private val _goal = MutableLiveData(Goal())
+    val goal: LiveData<Goal> get() = _goal
 
-    // Goal Item Image
-    private val _imageUri = MutableLiveData<Uri?>()
-    val imageUri: LiveData<Uri?> get() = _imageUri
+    fun updateImageUri(uri: Uri?) {
+        _goal.value = _goal.value?.copy(imageUri = uri)
+    }
 
-    // Goal Item Name
-    private val _goalName = MutableLiveData<String>()
-    val goalName: LiveData<String> get() = _goalName
+    fun updateTitle(title: String) {
+        _goal.value = _goal.value?.copy(title = title)
+    }
 
-    // Goal Item Price
-    private val _goalPrice = MutableLiveData<String>()
-    val goalPrice: LiveData<String> get() = _goalPrice
+    fun updateAmount(amount: String) {
+        _goal.value = _goal.value?.copy(amount = amount)
+    }
 
-    // Goal Date Started
-    private val _dateStarted = MutableLiveData<String>()
-    val dateStarted: LiveData<String> get() = _dateStarted
+    fun updateDescription(description: String) {
+        _goal.value = _goal.value?.copy(description = description)
+    }
 
-    // Goal Date Finished
-    private val _dateFinished = MutableLiveData<String>()
-    val dateFinished: LiveData<String> get() = _dateFinished
+    fun updateCategory(category: String) {
+        _goal.value = _goal.value?.copy(category = category)
+    }
 
-    // Goal Daily Saving Amount
-    private val _dailySaving = MutableLiveData<String>()
-    val dailySaving: LiveData<String> get() = _dailySaving
+    fun updatePeriod(period: Float) {
+        _goal.value = _goal.value?.copy(period = minOf( period, 365f))
+    }
 
+    fun updateDailySavingAmount(dailySaving: Int) {
+        _goal.value = _goal.value?.copy(dailySavingAmount = dailySaving)
+    }
 
-
-
-    fun updateDatesBasedOnPeriod() {
-        val currentPeriod = _periodSliderValue.value ?: 1
-        _dateStarted.value = getCurrentDate()
-        _dateFinished.value = getDateAfterDays(currentPeriod.toInt())
+    fun updateDateStarted() {
+        _goal.value = _goal.value?.copy(dateStarted = getCurrentDate())
     }
 
     private fun getCurrentDate(): String {
         val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         return dateFormatter.format(Date())
     }
-
-    private fun getDateAfterDays(days: Int): String {
-        val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_YEAR, days)
-        val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        return dateFormatter.format(calendar.time)
-    }
-
-    fun setImageUri(uri: Uri?) {
-        _imageUri.value = uri
-    }
-
-    fun setPeriodSliderValue(value: Float){
-        _periodSliderValue.value = value
-    }
-
-    fun addPeriodSliderValue(value : Float) {
-        val currentValue = _periodSliderValue.value ?: 0f
-        _periodSliderValue.value = minOf(currentValue + value, 365f)
-    }
-
 
 }

@@ -1,6 +1,7 @@
 package com.tms.targetedmoneysaver.ui.addgoal.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ class AddGoalPeriodFragment : Fragment() {
 
     private var _binding: FragmentAddGoalPeriodBinding? = null
     private val binding get() = _binding!!
+    private var isSliderUpdating = false
 
     private val addGoalViewModel: AddGoalViewModel by activityViewModels()
 
@@ -30,46 +32,61 @@ class AddGoalPeriodFragment : Fragment() {
         _binding = FragmentAddGoalPeriodBinding.inflate(inflater, container, false)
         setUpAppBar()
 
-        addGoalViewModel.periodSliderValue.observe(viewLifecycleOwner) {
-            binding.addGoalTvTotalDays.text = getString(R.string.goal_period_total_days, it)
-        }
-        addGoalViewModel.imageUri.observe(viewLifecycleOwner) { uri ->
-            uri?.let {
+        addGoalViewModel.goal.observe(viewLifecycleOwner) { goal ->
+            val periodValue = goal.period
+
+            binding.apply {
+                tvGoalTitle.text = goal.title
+                tvGoalAmount.text = goal.amount
+                tvGoalDescription.text = goal.description
+                tvGoalCategory.text = goal.category
+                addGoalPeriodSlider.value = periodValue
+                addGoalTvTotalDays.text = getString(R.string.goal_period_total_days, periodValue)
+            }
+
+            goal.imageUri?.let {
                 binding.addGoalImageChosen.setImageURI(it)
             }
         }
 
         binding.apply {
-
             addGoalsBtnAddWeeks.setOnClickListener {
-                addPeriodValue(7f)
-                binding.addGoalPeriodSlider.value = addGoalViewModel.periodSliderValue.value!!
+                val currentPeriod = addGoalViewModel.goal.value?.period ?: 1f
+                addGoalViewModel.updatePeriod(currentPeriod + 7f)
             }
             addGoalsBtnAddMonth.setOnClickListener {
-                addPeriodValue(30f)
-                binding.addGoalPeriodSlider.value = addGoalViewModel.periodSliderValue.value!!
+                val currentPeriod = addGoalViewModel.goal.value?.period ?: 1f
+                addGoalViewModel.updatePeriod(currentPeriod + 30f)
             }
-            addGoalPeriodSlider.addOnChangeListener { _, value, _ ->
-                addGoalViewModel.setPeriodSliderValue(value)
-                addGoalViewModel.updateDatesBasedOnPeriod()
+            binding.addGoalPeriodSlider.addOnChangeListener { slider, value, fromUser ->
+                // Only update the ViewModel if the change comes from the user sliding the slider
+                if (fromUser && !isSliderUpdating) {
+                    isSliderUpdating = true
+                    addGoalViewModel.updatePeriod(value)
+                    isSliderUpdating = false
+                }
             }
             addGoalBtnNextSteps.setOnClickListener {
-                // TODO: GET THE ITEM PRICE AND DIVIDE IT BY THE TOTAL DAYS
-                addGoalViewModel.periodSliderValue.value?.let {
-                    findNavController().navigate(R.id.action_addGoalPeriodFragment_to_addGoalBreakdownFragment)
-                } ?: Toasty.error(requireContext(), "Set Your Goal Period!", Toast.LENGTH_SHORT)
-                    .show()
-
+                addGoalViewModel.updateDateStarted()
+                addGoalViewModel.updateDailySavingAmount(calculateDailySavingAmount())
+                findNavController().navigate(R.id.action_addGoalPeriodFragment_to_addGoalBreakdownFragment)
             }
-
         }
-
         return binding.root
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun calculateDailySavingAmount(): Int {
+        val goalsPeriod = addGoalViewModel.goal.value?.period ?: 1f
+        val goalsAmount = addGoalViewModel.goal.value?.amount?.toFloat() ?: 1f
+
+        val dailySaving = (goalsAmount / goalsPeriod).toInt()
+        return dailySaving
     }
 
     private fun setUpAppBar() {
@@ -86,11 +103,6 @@ class AddGoalPeriodFragment : Fragment() {
         binding.topAppBar.setNavigationOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
-    }
-
-
-    private fun addPeriodValue(value: Float) {
-        addGoalViewModel.addPeriodSliderValue(value)
     }
 
 }
