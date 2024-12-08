@@ -70,6 +70,7 @@
     <string name="add_goal_image_header_text">Provide Information For Your Goal</string>
     <string name="add_goal_image_button_clear_image">Clear Image</string>
     <string name="add_goal_image_button_confirm">Confirm</string>
+
     <string name="goal_title_label">Title</string>
     <string name="goal_amount_label">Amount</string>
     <string name="goal_description_label">Description</string>
@@ -114,8 +115,6 @@
     <string name="goal_detail_total_days_saved">Days Saved: %d</string>
     <string name="goal_detail_total_money_saved">Money Saved: Rp.%d</string>
     <string name="goal_detail_remaining_days">Remaining Days: %d</string>
-    <string name="goal_detail_item_name_label">Name</string>
-    <string name="goal_detail_item_name">Item Name</string>
     <string name="goal_detail_item_price_label">Price</string>
     <string name="goal_detail_item_price">Rp. %d</string>
     <string name="goal_detail_date_started_label">Date Started</string>
@@ -123,7 +122,7 @@
     <string name="goal_detail_date_finish_label">Estimation Completion Date</string>
     <string name="goal_detail_date_finish">1/1/2025</string>
     <string name="goal_detail_daily_saving_amount_label">Daily Saving Amount</string>
-    <string name="goal_detail_daily_saving_amount">Rp. %d</string>
+    <string name="goal_detail_daily_saving_amount">Daily Saving: Rp.%d</string>
     <string name="goal_detail_button_save_today">Save Today</string>
 
 

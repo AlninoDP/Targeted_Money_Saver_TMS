@@ -64,11 +64,11 @@ class GoalDetailsActivity : AppCompatActivity() {
             goalDetailMoneySaved.text = getString(R.string.goal_detail_total_money_saved, moneySaved)
             goalDetailRemainingDays.text = getString(R.string.goal_detail_remaining_days, remainingDays)
 
-            goalDetailItemName.text = itemName
-            goalDetailItemPrice.text = getString(R.string.goal_detail_item_price, itemPrice)
+            goalDetailTitle.text = itemName
+            goalDetailAmount.text = getString(R.string.goal_detail_item_price, itemPrice)
             goalDetailItemDateStarted.text = dateStarted
             goalDetailItemDateCompletion.text = addDaysToDate(dateStarted, remainingDays.toLong())
-            goalDetailItemDailySaving.text = getString(R.string.goal_detail_daily_saving_amount, dailySavingAmount)
+            goalDetailDailySaving.text = getString(R.string.goal_detail_daily_saving_amount, dailySavingAmount)
         }
 
     }

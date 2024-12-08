@@ -131,6 +131,16 @@
             android:text="@string/goal_detail_remaining_days"
             android:textSize="16sp"
             app:drawableStartCompat="@drawable/ic_remaining_days" />
+
+        <TextView
+            android:id="@+id/goal_detail_daily_saving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:drawablePadding="4dp"
+            android:text="@string/goal_detail_daily_saving_amount"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_wallet" />
     </LinearLayout>
 
     <!--  Goal Detail -->
@@ -139,13 +149,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/goal_detail_sub_header_text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goal_progress_card" />
+        app:layout_constraintTop_toBottomOf="@+id/goal_progress_detail" />
+
+    <!-- Goal Category -->
+    <TextView
+        android:id="@+id/goal_detail_category_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/goal_category_label"
+        app:layout_constraintStart_toStartOf="@+id/goal_detail_sub_header"
+        app:layout_constraintTop_toBottomOf="@+id/goal_detail_sub_header" />
+
+    <!-- Goal Category -->
+    <TextView
+        android:id="@+id/goal_detail_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/goal_category_hint"
+        app:layout_constraintStart_toEndOf="@+id/goal_detail_category_label"
+        app:layout_constraintTop_toBottomOf="@+id/goal_detail_sub_header" />
 
     <ImageView
         android:id="@+id/goal_detail_image"
@@ -159,7 +190,7 @@
         android:src="@drawable/item_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goal_detail_sub_header" />
+        app:layout_constraintTop_toBottomOf="@+id/goal_detail_category_label" />
 
 
     <com.google.android.material.card.MaterialCardView
@@ -180,82 +211,130 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Item Name Label -->
+            <!-- Goal Tittle Label -->
             <TextView
-                android:id="@+id/goal_detail_item_name_label"
+                android:id="@+id/goal_detail_title_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/goal_detail_item_name_label"
+                android:text="@string/goal_title_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Item Name -->
+            <!-- Goal Title -->
             <TextView
-                android:id="@+id/goal_detail_item_name"
+                android:id="@+id/goal_detail_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/goal_detail_item_name"
-                android:textSize="22sp"
+                android:text="@string/goal_title_hint"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/goal_detail_item_name_label"
-                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_name_label" />
+                app:layout_constraintStart_toStartOf="@+id/goal_detail_title_label"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_title_label" />
 
-            <!-- Item Price Label -->
+            <!-- Goal Description Label -->
             <TextView
-                android:id="@+id/goal_detail_item_price_label"
+                android:id="@+id/goal_detail_description_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/goal_description_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_title" />
+
+            <!-- Goal Title -->
+            <TextView
+                android:id="@+id/goal_detail_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/goal_description_hint"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/goal_detail_title_label"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_description_label" />
+
+            <!-- Goal Amount Label -->
+            <TextView
+                android:id="@+id/goal_detail_amount_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/goal_detail_item_price_label"
+                android:text="@string/goal_amount_label"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_name" />
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_description" />
 
-            <!-- Item Price -->
+            <!-- Goal Amount -->
             <TextView
-                android:id="@+id/goal_detail_item_price"
+                android:id="@+id/goal_detail_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/goal_title_hint"
+                android:text="@string/goal_amount_hint"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/goal_detail_item_price_label"
-                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_name" />
+                app:layout_constraintStart_toEndOf="@+id/goal_detail_amount_label"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_description" />
 
+            <!-- Goal Period Label-->
+            <TextView
+                android:id="@+id/goal_detail_period_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/goal_breakdown_period_label"
+                app:layout_constraintStart_toEndOf="@+id/goal_detail_amount"
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_description" />
 
-            <!-- Item Date Started Label -->
+            <!-- Goal Period -->
+            <TextView
+                android:id="@+id/goal_detail_period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/goal_breakdown_period"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/goal_detail_period_label"
+                app:layout_constraintTop_toTopOf="@+id/goal_detail_period_label" />
+
+            <!-- Goal Date Started Label -->
             <TextView
                 android:id="@+id/goal_detail_date_started_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="7dp"
                 android:text="@string/goal_detail_date_started_label"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_price" />
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_amount_label" />
 
-            <!-- Item Date Started -->
+            <!-- Goal Date Started -->
             <TextView
                 android:id="@+id/goal_detail_item_date_started"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:text="@string/goal_detail_date_started"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/goal_detail_date_started_label"
-                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_price" />
+                app:layout_constraintTop_toTopOf="@+id/goal_detail_date_started_label" />
 
-            <!-- Item Date Completion Label -->
+            <!-- Goal Date Completion Label -->
             <TextView
                 android:id="@+id/goal_detail_date_completion_label"
                 android:layout_width="wrap_content"
@@ -264,7 +343,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/goal_detail_date_finish_label"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_date_started" />
+                app:layout_constraintTop_toBottomOf="@+id/goal_detail_date_started_label" />
 
             <!-- Item Date Completion -->
             <TextView
@@ -272,35 +351,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:text="@string/goal_detail_date_finish"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/goal_detail_date_completion_label"
-                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_date_started" />
+                app:layout_constraintTop_toTopOf="@+id/goal_detail_date_completion_label" />
 
 
-            <!-- Item Daily Saving Label -->
-            <TextView
-                android:id="@+id/goal_detail_daily_saving_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/goal_detail_daily_saving_amount_label"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_date_completion" />
-
-            <!-- Item Daily Saving -->
-            <TextView
-                android:id="@+id/goal_detail_item_daily_saving"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/goal_detail_daily_saving_amount"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/goal_detail_daily_saving_label"
-                app:layout_constraintTop_toBottomOf="@+id/goal_detail_item_date_completion" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
