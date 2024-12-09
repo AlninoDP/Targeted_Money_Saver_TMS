@@ -20,15 +20,15 @@ class LoginViewModel(
 
     fun loginUser(email: String, password: String) {
         _loginResult.value = Result.Loading(true)
-        authRepository.loginUser(email, password) { success, errorMsg, token ->
-            if (success) {
+        authRepository.loginUser(email, password) { response->
+            if (response.success) {
                 viewModelScope.launch {
-                    userPreferences.saveUserToken(token ?: "")
+                    userPreferences.saveUserToken(response.token)
                 }
-                Log.d("AAS", "gige: $token")
-                _loginResult.value = Result.Success("Login Success")
+                Log.d("AAS", "gige: ${response.token}")
+                _loginResult.value = Result.Success(response.message)
             } else {
-                _loginResult.value = Result.Failure(Exception(errorMsg))
+                _loginResult.value = Result.Failure(Exception(response.message))
             }
             _loginResult.value = Result.Loading(false)
         }

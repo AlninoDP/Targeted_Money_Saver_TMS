@@ -2,7 +2,6 @@ package com.tms.targetedmoneysaver.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -46,8 +45,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 is Success -> {
-                    val response = result.data
-                    Toasty.success(this, response, Toast.LENGTH_SHORT, true).show()
+                    val message = result.data
+                    Toasty.success(this, message, Toast.LENGTH_SHORT, true).show()
                     val intent = Intent(this, HomeActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
