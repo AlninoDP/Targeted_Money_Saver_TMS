@@ -40,8 +40,9 @@ class LoginViewModel(
     fun getToken() {
         viewModelScope.launch {
             userPreferences.getUserToken().collect {
-                Log.d("AAS", "getTokenten: $it")
+                Log.d("QWE", "beforeToken: $it")
             }
+            userPreferences.deleteUserToken()
         }
     }
 }

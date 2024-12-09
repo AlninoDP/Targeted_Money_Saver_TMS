@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.fragment.goals.GoalsFragment">
 
     <!--  AppBar -->
@@ -19,8 +19,8 @@
         <ImageView
             android:layout_width="175dp"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/application_logo_description"
             android:layout_gravity="start"
+            android:contentDescription="@string/application_logo_description"
             android:src="@drawable/logo_w_text_variance_3" />
 
         <ImageView
@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
-            android:scaleType="fitEnd"
             android:contentDescription="@string/menu_setting_description"
+            android:scaleType="fitEnd"
             android:src="@drawable/ic_settings"
             app:tint="@color/white" />
     </androidx.appcompat.widget.Toolbar>
@@ -40,22 +40,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar" />
 
     <!-- Empty Goal Layout -->
     <include
         android:id="@+id/empty_goal_data"
         layout="@layout/empty_goal_data"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar" />
 
 
     <androidx.recyclerview.widget.RecyclerView

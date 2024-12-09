@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
     id("com.google.gms.google-services")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -93,5 +94,10 @@ dependencies {
 
     // Datastore Preferences
     implementation(libs.androidx.datastore.preferences)
+
+    // Room Runtime, Room KTX, dan Room Compiler (KSP)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 }
 

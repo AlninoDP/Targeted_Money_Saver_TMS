@@ -2,38 +2,82 @@ package com.tms.targetedmoneysaver.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.tms.targetedmoneysaver.data.remote.response.Goal
-import com.tms.targetedmoneysaver.data.remote.response.GoalItem
-import com.tms.targetedmoneysaver.data.remote.response.GoalProduct
-import com.tms.targetedmoneysaver.data.remote.response.GoalTracker
+import androidx.lifecycle.map
+import com.tms.targetedmoneysaver.data.local.entity.GoalEntity
+import com.tms.targetedmoneysaver.data.local.room.GoalDao
+import com.tms.targetedmoneysaver.data.remote.requestbody.UpdateSavingBody
+import com.tms.targetedmoneysaver.data.remote.response.UpdateSavingResponse
 import com.tms.targetedmoneysaver.data.remote.retrofit.ApiService
 
 class MainRepository(
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val goalDao: GoalDao
 ) {
 
-    fun getAllGoals(): LiveData<Result<List<GoalItem>>> = liveData {
+    fun getAllGoals(): LiveData<Result<List<GoalEntity>>> = liveData {
         emit(Result.Loading(true))
+        try {
+            val response = apiService.getDreamProduct()
+            val goalItems = response.data
+            val goalList = goalItems.map { goalItem ->
+                GoalEntity(
+                    id = goalItem.id,
+                    image = goalItem.goal.image,
+                    title = goalItem.goal.title,
+                    amount = goalItem.goal.amount,
+                    description = goalItem.goal.description,
+                    category = goalItem.goal.category,
+                    period = goalItem.goal.period,
+                    dateStarted = goalItem.goal.dateStarted,
+                    amountSaved = goalItem.tracker.amountSaved,
+                    dailySave = goalItem.tracker.dailySave,
+                    daysSaved = goalItem.tracker.daysSaved,
+                    daysRemaining = goalItem.tracker.daysRemaining
+                )
+            }
 
-        // Simulate Data
-        val listGoal: List<GoalItem> = listOf(
-            GoalItem(
-                goal = Goal("image1", "Poco M3", 30, "01/12/2024"),
-                product = GoalProduct(1200000, "Poco M3"),
-                tracker = GoalTracker(30, 0, 0,40000)
-            ),
-            GoalItem(
-                goal = Goal("image2", "Lenovo Legion Pro 7i", 60, "03/12/2024"),
-                product = GoalProduct(42000000, "Lenovo Legion Pro 7i"),
-                tracker = GoalTracker(60, 0, 0, 700000)
-            ),
-            GoalItem(
-                goal = Goal("image3", "TWS Mi Buds 4", 30, "28/11/2024"),
-                product = GoalProduct(289000, "TWS Mi Buds 4"),
-                tracker = GoalTracker(24, 6, 58200, 9700)
-            )
-        )
+            goalDao.deleteAllGoals()
+            goalDao.insertGoals(goalList)
+            emit(Result.Loading(false))
+        } catch (e: Exception) {
+            goalDao.deleteAllGoals()
+            emit(Result.Loading(false))
+            // Emit an empty list when error occurs
+            emit(Result.Success(emptyList()))
+            return@liveData // Return early to prevent the rest of the code from running
+        }
 
-        emit(Result.Success(listGoal))
+        val localData: LiveData<Result<List<GoalEntity>>> =
+            goalDao.getAllGoals().map { Result.Success(it) }
+
+        emitSource(localData)
     }
+
+    fun updateSaving(id: String): LiveData<Result<UpdateSavingResponse>> = liveData {
+        emit(Result.Loading(true))
+        try {
+            val response = apiService.updateSaving(UpdateSavingBody(id))
+            emit(Result.Loading(false))
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Loading(false))
+            emit(Result.Failure(e))
+        }
+
+
+    }
+
+    fun getClosestGoal(): LiveData<GoalEntity> {
+        return goalDao.getClosestGoal()
+    }
+
+    fun getRecentGoals(): LiveData<List<GoalEntity>> {
+        return goalDao.getRecentGoals()
+    }
+
+    fun getMostSavedGoals(): LiveData<List<GoalEntity>> {
+        return goalDao.getMostSavedGoals()
+    }
+
+
 }

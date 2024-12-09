@@ -11,40 +11,55 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tms.targetedmoneysaver.adapter.GoalsAdapter
 import com.tms.targetedmoneysaver.data.Result
 import com.tms.targetedmoneysaver.databinding.FragmentGoalsBinding
+import com.tms.targetedmoneysaver.ui.ViewModelFactory
 import com.tms.targetedmoneysaver.ui.addgoal.AddGoalActivity
+import es.dmoral.toasty.Toasty
 
 class GoalsFragment : Fragment() {
 
     private var _binding: FragmentGoalsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: GoalsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentGoalsBinding.inflate(inflater, container, false)
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(requireActivity())
+        val goalViewModel by viewModels<GoalsViewModel> {
+            factory
+        }
 
         val adapter = GoalsAdapter()
 
-//        viewModel.getAllGoals().observe(viewLifecycleOwner){ result ->
-//            when (result){
-//                is Result.Loading -> {
-//                    binding.goalsProgressBar.visibility = View.VISIBLE
-//                }
-//                is Result.Success -> {
-//                    val listGoal = result.data
-//                    binding.goalsProgressBar.visibility = View.GONE
-//                    adapter.submitList(listGoal)
-//                    binding.rvGoals.adapter = adapter
-//                    binding.rvGoals.layoutManager = LinearLayoutManager(requireContext())
-//                }
-//                is Result.Failure -> {
-//                    // TODO: Handle Error
-//                }
-//            }
-//        }
+        goalViewModel.getAllGoals().observe(viewLifecycleOwner) { result ->
+            if (result != null) {
+                when (result) {
+                    is Result.Loading -> showLoading(result.state)
+                    is Result.Success -> {
+                        if (result.data.isEmpty()) {
+                            showEmptyState()
+                        } else {
+                            goalViewModel.getMostSavedGoals().observe(viewLifecycleOwner) {
+                                adapter.submitList(it)
+                            }
+                        }
+                    }
+
+                    is Result.Failure -> {
+                        Toasty.error(requireContext(), "Something went wrong", Toasty.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+
+        }
+
+        binding.rvGoals.adapter = adapter
+        binding.rvGoals.layoutManager =
+            LinearLayoutManager(requireContext())
+
 
 
         binding.fabAddNewGoal.setOnClickListener {
@@ -53,6 +68,20 @@ class GoalsFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun showEmptyState() {
+        binding.emptyGoalData.root.visibility = View.VISIBLE
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.goalsProgressBar.visibility = View.VISIBLE
+            binding.rvGoals.visibility = View.GONE
+        } else {
+            binding.goalsProgressBar.visibility = View.GONE
+            binding.rvGoals.visibility = View.VISIBLE
+        }
     }
 
     override fun onDestroy() {
