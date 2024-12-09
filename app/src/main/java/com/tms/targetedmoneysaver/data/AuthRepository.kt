@@ -33,7 +33,7 @@ class AuthRepository {
     fun registerUser(
         email: String,
         password: String,
-        callback: (Boolean, String?, String?) -> Unit
+        callback: (AuthResponse) -> Unit
     ) {
         firebaseAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
@@ -42,13 +42,13 @@ class AuthRepository {
                     user?.getIdToken(true)?.addOnCompleteListener { tokenTask ->
                         if (tokenTask.isSuccessful) {
                             val token = tokenTask.result?.token
-                            callback(true, null, token)
+                            callback(AuthResponse(true, "Register Success", token ?: ""))
                         } else {
-                            callback(false, tokenTask.exception?.message, null)
+                            callback(AuthResponse(false, "Token failed to retrieve", ""))
                         }
                     }
                 } else {
-                    callback(false, task.exception?.message, null)
+                    callback(AuthResponse(false, "Register failed" , ""))
                 }
             }
     }

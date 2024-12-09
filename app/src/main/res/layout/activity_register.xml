@@ -29,6 +29,16 @@
 
         </FrameLayout>
 
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/register_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_sign_up"/>
+
         <!-- Header Text -->
         <TextView
             android:id="@+id/tv_register_header"
@@ -153,7 +163,7 @@
             android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toStartOf="@+id/tv_other_login"
             app:layout_constraintStart_toStartOf="@+id/btn_sign_up"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
+            app:layout_constraintTop_toBottomOf="@+id/register_progress_bar" />
 
         <TextView
             android:id="@id/tv_other_login"
@@ -164,7 +174,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
+            app:layout_constraintTop_toBottomOf="@+id/register_progress_bar" />
 
         <View
             android:id="@+id/right_line"
@@ -175,7 +185,7 @@
             android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="@+id/btn_sign_up"
             app:layout_constraintStart_toEndOf="@+id/tv_other_login"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
+            app:layout_constraintTop_toBottomOf="@+id/register_progress_bar" />
 
         <!-- Google Login Button -->
         <ImageView

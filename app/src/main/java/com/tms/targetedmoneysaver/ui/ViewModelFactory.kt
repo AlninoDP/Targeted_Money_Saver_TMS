@@ -9,6 +9,7 @@ import com.tms.targetedmoneysaver.data.di.Injection
 import com.tms.targetedmoneysaver.data.local.UserPreferences
 import com.tms.targetedmoneysaver.data.local.datastore
 import com.tms.targetedmoneysaver.ui.login.LoginViewModel
+import com.tms.targetedmoneysaver.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(
     private val mainRepository: MainRepository,
@@ -32,6 +33,10 @@ class ViewModelFactory private constructor(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(
+                authRepository,
+                userPreferences
+            ) as T
+            modelClass.isAssignableFrom(RegisterViewModel::class.java) -> RegisterViewModel(
                 authRepository,
                 userPreferences
             ) as T

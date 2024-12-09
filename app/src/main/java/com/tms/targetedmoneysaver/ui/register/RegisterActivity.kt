@@ -3,19 +3,29 @@ package com.tms.targetedmoneysaver.ui.register
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputLayout
 import com.tms.targetedmoneysaver.MainActivity
 import com.tms.targetedmoneysaver.R
+import com.tms.targetedmoneysaver.data.Result.Failure
+import com.tms.targetedmoneysaver.data.Result.Loading
+import com.tms.targetedmoneysaver.data.Result.Success
 import com.tms.targetedmoneysaver.databinding.ActivityRegisterBinding
+import com.tms.targetedmoneysaver.ui.ViewModelFactory
+import com.tms.targetedmoneysaver.ui.home.HomeActivity
 import com.tms.targetedmoneysaver.ui.login.LoginActivity
+import com.tms.targetedmoneysaver.ui.login.LoginViewModel
+import es.dmoral.toasty.Toasty
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityRegisterBinding
+    private lateinit var registerViewModel: RegisterViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +36,36 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val viewModelFactory = ViewModelFactory.getInstance(this)
+        registerViewModel = viewModels<RegisterViewModel> { viewModelFactory }.value
+
+        registerViewModel.registerResult.observe(this@RegisterActivity) { result ->
+            when (result) {
+                is Loading -> {
+                    showLoading(result.state)
+                }
+
+                is Success -> {
+                    val message = result.data
+                    Toasty.success(this, message, Toast.LENGTH_SHORT, true).show()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(intent)
+                    finish()
+                }
+
+                is Failure -> {
+                    Toasty.error(
+                        this,
+                        result.throwable.message.toString(),
+                        Toast.LENGTH_SHORT,
+                        true
+                    ).show()
+                }
+            }
+
         }
 
         binding.apply {
@@ -45,7 +85,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 val passwordConfirmation = binding.etRegisterPasswordConfirmation.text.toString()
 
                 if (validateInput(email, password, passwordConfirmation)){
-                    // TODO: Register Logic
+                    registerViewModel.registerUser(email,password)
                 }
 
             }
@@ -84,5 +124,15 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             return false
         }
         return true
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.registerProgressBar.visibility = View.VISIBLE
+            binding.btnSignUp.visibility = View.GONE
+        } else {
+            binding.registerProgressBar.visibility = View.GONE
+            binding.btnSignUp.visibility = View.VISIBLE
+        }
     }
 }
