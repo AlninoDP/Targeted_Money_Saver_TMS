@@ -101,7 +101,7 @@
                 android:id="@+id/et_register_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_password"
+                android:drawableStart="@drawable/ic_pass_key"
                 android:drawablePadding="16dp"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword" />
@@ -124,7 +124,7 @@
                 android:id="@+id/et_register_password_confirmation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_password"
+                android:drawableStart="@drawable/ic_pass_key"
                 android:drawablePadding="16dp"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword" />

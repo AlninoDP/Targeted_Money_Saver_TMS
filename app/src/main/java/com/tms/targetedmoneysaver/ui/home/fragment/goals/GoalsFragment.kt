@@ -28,23 +28,23 @@ class GoalsFragment : Fragment() {
 
         val adapter = GoalsAdapter()
 
-        viewModel.getAllGoals().observe(viewLifecycleOwner){ result ->
-            when (result){
-                is Result.Loading -> {
-                    binding.goalsProgressBar.visibility = View.VISIBLE
-                }
-                is Result.Success -> {
-                    val listGoal = result.data
-                    binding.goalsProgressBar.visibility = View.GONE
-                    adapter.submitList(listGoal)
-                    binding.rvGoals.adapter = adapter
-                    binding.rvGoals.layoutManager = LinearLayoutManager(requireContext())
-                }
-                is Result.Failure -> {
-                    // TODO: Handle Error
-                }
-            }
-        }
+//        viewModel.getAllGoals().observe(viewLifecycleOwner){ result ->
+//            when (result){
+//                is Result.Loading -> {
+//                    binding.goalsProgressBar.visibility = View.VISIBLE
+//                }
+//                is Result.Success -> {
+//                    val listGoal = result.data
+//                    binding.goalsProgressBar.visibility = View.GONE
+//                    adapter.submitList(listGoal)
+//                    binding.rvGoals.adapter = adapter
+//                    binding.rvGoals.layoutManager = LinearLayoutManager(requireContext())
+//                }
+//                is Result.Failure -> {
+//                    // TODO: Handle Error
+//                }
+//            }
+//        }
 
 
         binding.fabAddNewGoal.setOnClickListener {

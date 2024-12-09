@@ -20,5 +20,10 @@
         android:name="com.tms.targetedmoneysaver.ui.home.fragment.goals.GoalsFragment"
         android:label="@string/btm_nav_your_goal"
         tools:layout="@layout/fragment_goals" />
+    <fragment
+        android:id="@+id/navigation_goal_history"
+        android:name="com.tms.targetedmoneysaver.ui.home.fragment.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 
 </navigation>

@@ -27,6 +27,7 @@
     <!-- Bottom Nav Bar -->
     <string name="btm_nav_home">Home</string>
     <string name="btm_nav_your_goal">Goals</string>
+    <string name="btm_nav_goal_history">History</string>
     <string name="btm_nav_profile">Profile</string>
 
 
@@ -61,8 +62,6 @@
     <string name="register_page_header_text">Create an Account</string>
     <string name="register_page_sub_header_text">Please register your account!</string>
     <string name="have_account">already have an account?</string>
-
-
 
 
     <!-- Add Goal Text -->
@@ -124,7 +123,6 @@
     <string name="goal_detail_daily_saving_amount_label">Daily Saving Amount</string>
     <string name="goal_detail_daily_saving_amount">Daily Saving: Rp.%d</string>
     <string name="goal_detail_button_save_today">Save Today</string>
-
 
 
     <string name="empty_goal_data">Uh oh, you do not have any goals that can be displayed right now, try adding a new goals</string>

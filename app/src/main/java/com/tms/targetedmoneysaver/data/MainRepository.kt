@@ -6,8 +6,11 @@ import com.tms.targetedmoneysaver.data.remote.response.Goal
 import com.tms.targetedmoneysaver.data.remote.response.GoalItem
 import com.tms.targetedmoneysaver.data.remote.response.GoalProduct
 import com.tms.targetedmoneysaver.data.remote.response.GoalTracker
+import com.tms.targetedmoneysaver.data.remote.retrofit.ApiService
 
-class MainRepository {
+class MainRepository(
+    private val apiService: ApiService
+) {
 
     fun getAllGoals(): LiveData<Result<List<GoalItem>>> = liveData {
         emit(Result.Loading(true))

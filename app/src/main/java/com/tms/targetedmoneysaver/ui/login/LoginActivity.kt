@@ -2,19 +2,28 @@ package com.tms.targetedmoneysaver.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputLayout
 import com.tms.targetedmoneysaver.R
+import com.tms.targetedmoneysaver.data.Result.*
 import com.tms.targetedmoneysaver.databinding.ActivityLoginBinding
+import com.tms.targetedmoneysaver.ui.ViewModelFactory
 import com.tms.targetedmoneysaver.ui.home.HomeActivity
 import com.tms.targetedmoneysaver.ui.register.RegisterActivity
+import es.dmoral.toasty.Toasty
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
+
     private lateinit var binding: ActivityLoginBinding
+
+    private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +34,35 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val viewModelFactory = ViewModelFactory.getInstance(this)
+        loginViewModel = viewModels<LoginViewModel> { viewModelFactory }.value
+
+        loginViewModel.loginResult.observe(this@LoginActivity) { result ->
+            when (result) {
+                is Loading -> {
+                    showLoading(result.state)
+                }
+
+                is Success -> {
+                    val response = result.data
+                    Toasty.success(this, response, Toast.LENGTH_SHORT, true).show()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(intent)
+                    finish()
+                }
+
+                is Failure -> {
+                    Toasty.error(
+                        this,
+                        result.throwable.message.toString(),
+                        Toast.LENGTH_SHORT,
+                        true
+                    ).show()
+                }
+            }
         }
 
         binding.apply {
@@ -41,15 +79,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 val email = binding.etLoginEmail.text.toString()
                 val password = binding.etLoginPassword.text.toString()
                 if (validateInput(email, password)) {
-                    // TODO: Login Logic
+                    loginViewModel.loginUser(email, password)
                 }
-                // TODO: ERASE THIS
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
             }
 
             R.id.btn_google_login -> {
                 // TODO: Google Login Logic
+                loginViewModel.getToken()
             }
 
             R.id.tv_forget_password -> {
@@ -77,5 +113,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             return false
         }
         return true
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loginProgressBar.visibility = View.VISIBLE
+            binding.btnSignIn.visibility = View.GONE
+        } else {
+            binding.loginProgressBar.visibility = View.GONE
+            binding.btnSignIn.visibility = View.VISIBLE
+        }
     }
 }

@@ -14,6 +14,12 @@
         android:title="@string/btm_nav_your_goal"/>
 
     <item
+        android:id="@+id/navigation_goal_history"
+        android:icon="@drawable/ic_history"
+        android:enabled="true"
+        android:title="@string/btm_nav_goal_history"/>
+
+    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_account"
         android:enabled="true"

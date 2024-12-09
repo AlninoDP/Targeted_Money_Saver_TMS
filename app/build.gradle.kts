@@ -74,9 +74,12 @@ dependencies {
     implementation(libs.roundedprogressbar)
     implementation(libs.circularprogressbar)
 
+    // Firebase Bom
     implementation(platform(libs.firebase.bom))
 
-    // Retrofit Core, Retrofit Converter Gson, Okhttp Interceptor (opsional)
+    implementation(libs.firebase.auth)
+
+    // Retrofit Core, Retrofit Converter Gson, Okhttp Interceptor
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
@@ -88,4 +91,7 @@ dependencies {
     // Glide
     implementation(libs.glide)
 
+    // Datastore Preferences
+    implementation(libs.androidx.datastore.preferences)
 }
+
