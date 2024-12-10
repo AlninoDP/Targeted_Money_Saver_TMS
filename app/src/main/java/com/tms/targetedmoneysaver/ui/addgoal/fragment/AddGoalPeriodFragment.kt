@@ -13,6 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.FragmentAddGoalPeriodBinding
+import com.tms.targetedmoneysaver.ui.ViewModelFactory
 import com.tms.targetedmoneysaver.ui.addgoal.AddGoalViewModel
 import es.dmoral.toasty.Toasty
 
@@ -22,7 +23,9 @@ class AddGoalPeriodFragment : Fragment() {
     private val binding get() = _binding!!
     private var isSliderUpdating = false
 
-    private val addGoalViewModel: AddGoalViewModel by activityViewModels()
+    private val addGoalViewModel: AddGoalViewModel by activityViewModels {
+        ViewModelFactory.getInstance(requireContext())
+    }
 
 
     override fun onCreateView(
@@ -37,7 +40,7 @@ class AddGoalPeriodFragment : Fragment() {
 
             binding.apply {
                 tvGoalTitle.text = goal.title
-                tvGoalAmount.text = goal.amount
+                tvGoalAmount.text = goal.amount.toString()
                 tvGoalDescription.text = goal.description
                 tvGoalCategory.text = goal.category
                 addGoalPeriodSlider.value = periodValue
@@ -69,6 +72,9 @@ class AddGoalPeriodFragment : Fragment() {
             addGoalBtnNextSteps.setOnClickListener {
                 addGoalViewModel.updateDateStarted()
                 addGoalViewModel.updateDailySavingAmount(calculateDailySavingAmount())
+
+                // TODO: DELETE THIS
+                addGoalViewModel.updateCategory("Vehicle")
                 findNavController().navigate(R.id.action_addGoalPeriodFragment_to_addGoalBreakdownFragment)
             }
         }

@@ -7,7 +7,7 @@ import com.tms.targetedmoneysaver.data.remote.response.DataItem
 
 class GoalsDiffCallback : DiffUtil.ItemCallback<GoalEntity>() {
     override fun areItemsTheSame(oldItem: GoalEntity, newItem: GoalEntity): Boolean {
-        return oldItem.title == newItem.title
+        return oldItem.id == newItem.id
     }
 
     @SuppressLint("DiffUtilEquals")

@@ -126,6 +126,7 @@
 
 
     <string name="empty_goal_data">Uh oh, you do not have any goals that can be displayed right now, try adding a new goals</string>
+    <string name="empty_goal_history_data">You have not completed any of your goals, but that doesn\'t mean you won\'t. Keep going!!</string>
 
     <string name="goal_quote_1">Almost there, keep it up</string>
 

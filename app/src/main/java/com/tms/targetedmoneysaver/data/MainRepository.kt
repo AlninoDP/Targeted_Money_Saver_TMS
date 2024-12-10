@@ -5,7 +5,9 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import com.tms.targetedmoneysaver.data.local.entity.GoalEntity
 import com.tms.targetedmoneysaver.data.local.room.GoalDao
+import com.tms.targetedmoneysaver.data.remote.requestbody.AddGoalBody
 import com.tms.targetedmoneysaver.data.remote.requestbody.UpdateSavingBody
+import com.tms.targetedmoneysaver.data.remote.response.AddGoalResponse
 import com.tms.targetedmoneysaver.data.remote.response.UpdateSavingResponse
 import com.tms.targetedmoneysaver.data.remote.retrofit.ApiService
 
@@ -17,7 +19,7 @@ class MainRepository(
     fun getAllGoals(): LiveData<Result<List<GoalEntity>>> = liveData {
         emit(Result.Loading(true))
         try {
-            val response = apiService.getDreamProduct()
+            val response = apiService.getAllGoal()
             val goalItems = response.data
             val goalList = goalItems.map { goalItem ->
                 GoalEntity(
@@ -53,6 +55,39 @@ class MainRepository(
         emitSource(localData)
     }
 
+    fun addGoal(
+        goalImage: String,
+        goalTitle: String,
+        goalAmount: Int,
+        goalDescription: String,
+        goalCategory: String,
+        goalPeriod: Int,
+        goalDateStarted: String,
+        goalDailySave: Int
+        ) : LiveData<Result<AddGoalResponse>> = liveData {
+            emit(Result.Loading(true))
+        try {
+            val response = apiService.addGoal(
+                AddGoalBody(
+                    goal_image = goalImage,
+                    goal_title = goalTitle,
+                    goal_amount = goalAmount,
+                    goal_description = goalDescription,
+                    goal_category = goalCategory,
+                    goal_period = goalPeriod,
+                    goal_date_started = goalDateStarted,
+                    daily_save = goalDailySave
+                )
+            )
+
+            emit(Result.Loading(false))
+            emit(Result.Success(response))
+        } catch (e: Exception){
+            emit(Result.Loading(false))
+            emit(Result.Failure(e))
+        }
+    }
+
     fun updateSaving(id: String): LiveData<Result<UpdateSavingResponse>> = liveData {
         emit(Result.Loading(true))
         try {
@@ -63,12 +98,14 @@ class MainRepository(
             emit(Result.Loading(false))
             emit(Result.Failure(e))
         }
-
-
     }
 
     fun getClosestGoal(): LiveData<GoalEntity> {
         return goalDao.getClosestGoal()
+    }
+
+    fun getCompletedGoals(): LiveData<List<GoalEntity>> {
+        return goalDao.getCompletedGoals()
     }
 
     fun getRecentGoals(): LiveData<List<GoalEntity>> {

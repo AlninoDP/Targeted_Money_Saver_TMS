@@ -12,13 +12,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.FragmentAddGoalImageBinding
+import com.tms.targetedmoneysaver.ui.ViewModelFactory
 import com.tms.targetedmoneysaver.ui.addgoal.AddGoalViewModel
+import com.tms.targetedmoneysaver.ui.register.RegisterViewModel
 import com.tms.targetedmoneysaver.utils.getImageUri
 import es.dmoral.toasty.Toasty
 
@@ -28,7 +32,10 @@ class AddGoalImageFragment : Fragment() {
     private var _binding: FragmentAddGoalImageBinding? = null
     private val binding get() = _binding!!
 
-    private val addGoalViewModel: AddGoalViewModel by activityViewModels()
+    private val addGoalViewModel: AddGoalViewModel by activityViewModels {
+        ViewModelFactory.getInstance(requireContext())
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,8 +64,8 @@ class AddGoalImageFragment : Fragment() {
 
             if (isFormValid()) {
                 addGoalViewModel.updateTitle(binding.etGoalTitle.text.toString())
-                addGoalViewModel.updateAmount(binding.etGoalAmount.text.toString())
-                addGoalViewModel.updateDescription(binding.etGoalDescription.text.toString())
+                addGoalViewModel.updateAmount(binding.etGoalAmount.text.toString().toInt())
+                addGoalViewModel.updateDescription(binding.etGoalDescription.text.toString().trim())
 
                 // TODO: SEND INFORMATION TO ANALYZE AND GET CATEGORY PREDICTION
                 addGoalViewModel.goal.value?.imageUri?.let {

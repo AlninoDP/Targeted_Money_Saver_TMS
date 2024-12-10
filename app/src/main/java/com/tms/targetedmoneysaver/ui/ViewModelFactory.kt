@@ -8,8 +8,10 @@ import com.tms.targetedmoneysaver.data.MainRepository
 import com.tms.targetedmoneysaver.data.di.Injection
 import com.tms.targetedmoneysaver.data.local.UserPreferences
 import com.tms.targetedmoneysaver.data.local.datastore
+import com.tms.targetedmoneysaver.ui.addgoal.AddGoalViewModel
 import com.tms.targetedmoneysaver.ui.goaldetails.GoalDetailsViewModel
 import com.tms.targetedmoneysaver.ui.home.fragment.goals.GoalsViewModel
+import com.tms.targetedmoneysaver.ui.home.fragment.history.HistoryViewModel
 import com.tms.targetedmoneysaver.ui.home.fragment.home.HomeViewModel
 import com.tms.targetedmoneysaver.ui.login.LoginViewModel
 import com.tms.targetedmoneysaver.ui.register.RegisterViewModel
@@ -48,6 +50,8 @@ class ViewModelFactory private constructor(
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(mainRepository) as T
             modelClass.isAssignableFrom(GoalsViewModel::class.java) -> GoalsViewModel(mainRepository) as T
             modelClass.isAssignableFrom(GoalDetailsViewModel::class.java) -> GoalDetailsViewModel(mainRepository) as T
+            modelClass.isAssignableFrom(HistoryViewModel::class.java) -> HistoryViewModel(mainRepository) as T
+            modelClass.isAssignableFrom(AddGoalViewModel::class.java) -> AddGoalViewModel(mainRepository) as T
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
