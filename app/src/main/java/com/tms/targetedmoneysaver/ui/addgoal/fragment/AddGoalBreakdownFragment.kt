@@ -1,7 +1,13 @@
 package com.tms.targetedmoneysaver.ui.addgoal.fragment
 
+import android.content.ContentResolver
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +24,7 @@ import com.tms.targetedmoneysaver.ui.ViewModelFactory
 import com.tms.targetedmoneysaver.ui.addgoal.AddGoalViewModel
 import com.tms.targetedmoneysaver.ui.home.HomeActivity
 import es.dmoral.toasty.Toasty
+import java.io.ByteArrayOutputStream
 
 
 class AddGoalBreakdownFragment : Fragment() {
@@ -48,52 +55,51 @@ class AddGoalBreakdownFragment : Fragment() {
 
 
                 goalBreakdownBtnStartSaving.setOnClickListener {
-                    // TODO: SAVE THE DATA TO SERVER AND NAVIGATE TO HOME
-                    addGoalViewModel.addGoal(
-                        goalImage= "asdasd",
-                        goalTitle=  goal.title ?: "",
-                        goalAmount= goal.amount,
-                        goalDescription= goal.description ?: "",
-                        goalCategory= goal.category ?: "",
-                        goalPeriod= goal.period.toInt(),
-                        goalDateStarted= goal.dateStarted ?: "",
-                        goalDailySave= goal.dailySavingAmount
-                    ).observe(viewLifecycleOwner){result ->
-                        if (result != null) {
-                            when (result) {
-                                is Result.Loading -> {
-//                                    showLoading(result.state)
-                                }
-                                is Result.Success -> {
-                                    val message = result.data.message
-                                    Toasty.success(
-                                        requireContext(),
-                                        message,
-                                        Toast.LENGTH_SHORT,
-                                        true
-                                    ).show()
-                                    val intent = Intent(requireContext(), HomeActivity::class.java)
-                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                                    startActivity(intent)
-                                    requireActivity().finish()
-                                }
+                     val contentResolver = activity?.contentResolver
 
-                                is Result.Failure -> {
-                                    Toasty.error(
-                                        requireContext(),
-                                        result.throwable.message.toString(),
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
+                   val base64String =  addGoalViewModel.convertUriToBase64(contentResolver!!)
+                    Log.d("BASE64", " LESGO $base64String")
 
-                            }
-                        }
-
-                    }
-//
-//                    Toasty.success(requireContext(),"Goal Added Successfully", Toast.LENGTH_SHORT).show()
-
+//                    addGoalViewModel.addGoal(
+//                        goalImage= "asdasd",
+//                        goalTitle=  goal.title ?: "",
+//                        goalAmount= goal.amount,
+//                        goalDescription= goal.description ?: "",
+//                        goalCategory= goal.category ?: "",
+//                        goalPeriod= goal.period.toInt(),
+//                        goalDateStarted= goal.dateStarted ?: "",
+//                        goalDailySave= goal.dailySavingAmount
+//                    ).observe(viewLifecycleOwner){result ->
+//                        if (result != null) {
+//                            when (result) {
+//                                is Result.Loading -> {
+////                                    showLoading(result.state)
+//                                }
+//                                is Result.Success -> {
+//                                    val message = result.data.message
+//                                    Toasty.success(
+//                                        requireContext(),
+//                                        message,
+//                                        Toast.LENGTH_SHORT,
+//                                        true
+//                                    ).show()
+//                                    val intent = Intent(requireContext(), HomeActivity::class.java)
+//                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+//                                    startActivity(intent)
+//                                    requireActivity().finish()
+//                                }
+//                                is Result.Failure -> {
+//                                    Toasty.error(
+//                                        requireContext(),
+//                                        result.throwable.message.toString(),
+//                                        Toast.LENGTH_SHORT
+//                                    ).show()
+//                                }
+//                            }
+//                        }
+//                    }
                 }
+
             }
 
             goal.imageUri?.let {
@@ -111,6 +117,18 @@ class AddGoalBreakdownFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun encode(imageUri: Uri): String {
+        val input = activity?.getContentResolver()?.openInputStream(imageUri)
+        val image = BitmapFactory.decodeStream(input , null, null)
+
+        // Encode image to base64 string
+        val baos = ByteArrayOutputStream()
+        image?.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        var imageBytes = baos.toByteArray()
+        val imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT)
+        return imageString
     }
 
 

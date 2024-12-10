@@ -1,14 +1,18 @@
 package com.tms.targetedmoneysaver.utils
 
+import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Context
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Base64
 import androidx.core.content.FileProvider
 import com.tms.targetedmoneysaver.BuildConfig
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -49,4 +53,33 @@ fun getImageUriForPreQ(context: Context): Uri {
         imageFile
     )
     //content://package_name.fileprovider/my_images/MyCamera/20230825_133659.jpg
+}
+
+
+fun uriToBase64(contentResolver: ContentResolver, uri: Uri): String? {
+    return try {
+        // Open the input stream for the given URI
+        val inputStream: InputStream? = contentResolver.openInputStream(uri)
+        if (inputStream != null) {
+            // Convert input stream to a byte array
+            val byteArray = inputStreamToByteArray(inputStream)
+            // Encode byte array to Base64
+            Base64.encodeToString(byteArray, Base64.DEFAULT)
+        } else {
+            null
+        }
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
+    }
+}
+
+private fun inputStreamToByteArray(inputStream: InputStream): ByteArray {
+    val buffer = ByteArrayOutputStream()
+    val data = ByteArray(1024)
+    var bytesRead: Int
+    while (inputStream.read(data).also { bytesRead = it } != -1) {
+        buffer.write(data, 0, bytesRead)
+    }
+    return buffer.toByteArray()
 }

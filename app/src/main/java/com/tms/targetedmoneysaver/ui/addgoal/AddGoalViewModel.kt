@@ -1,5 +1,6 @@
 package com.tms.targetedmoneysaver.ui.addgoal
 
+import android.content.ContentResolver
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -7,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tms.targetedmoneysaver.data.Goal
 import com.tms.targetedmoneysaver.data.MainRepository
+import com.tms.targetedmoneysaver.utils.uriToBase64
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -35,6 +37,11 @@ class AddGoalViewModel(private val mainRepository: MainRepository) : ViewModel()
 
     private val _goal = MutableLiveData(Goal())
     val goal: LiveData<Goal> get() = _goal
+
+    fun convertUriToBase64(contentResolver: ContentResolver): String?{
+        val imageUri = goal.value?.imageUri
+        return uriToBase64(contentResolver, imageUri!!)
+    }
 
     fun updateImageUri(uri: Uri?) {
         _goal.value = _goal.value?.copy(imageUri = uri)
