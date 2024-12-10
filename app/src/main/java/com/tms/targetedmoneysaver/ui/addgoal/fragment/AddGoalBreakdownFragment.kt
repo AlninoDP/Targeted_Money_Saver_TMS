@@ -55,49 +55,48 @@ class AddGoalBreakdownFragment : Fragment() {
 
 
                 goalBreakdownBtnStartSaving.setOnClickListener {
-                     val contentResolver = activity?.contentResolver
 
-                   val base64String =  addGoalViewModel.convertUriToBase64(contentResolver!!)
-                    Log.d("BASE64", " LESGO $base64String")
+                   val base64String =  addGoalViewModel.getBase64String(requireContext())
+                    Log.d("GILAA", "LESGO $base64String")
 
-//                    addGoalViewModel.addGoal(
-//                        goalImage= "asdasd",
-//                        goalTitle=  goal.title ?: "",
-//                        goalAmount= goal.amount,
-//                        goalDescription= goal.description ?: "",
-//                        goalCategory= goal.category ?: "",
-//                        goalPeriod= goal.period.toInt(),
-//                        goalDateStarted= goal.dateStarted ?: "",
-//                        goalDailySave= goal.dailySavingAmount
-//                    ).observe(viewLifecycleOwner){result ->
-//                        if (result != null) {
-//                            when (result) {
-//                                is Result.Loading -> {
-////                                    showLoading(result.state)
-//                                }
-//                                is Result.Success -> {
-//                                    val message = result.data.message
-//                                    Toasty.success(
-//                                        requireContext(),
-//                                        message,
-//                                        Toast.LENGTH_SHORT,
-//                                        true
-//                                    ).show()
-//                                    val intent = Intent(requireContext(), HomeActivity::class.java)
-//                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-//                                    startActivity(intent)
-//                                    requireActivity().finish()
-//                                }
-//                                is Result.Failure -> {
-//                                    Toasty.error(
-//                                        requireContext(),
-//                                        result.throwable.message.toString(),
-//                                        Toast.LENGTH_SHORT
-//                                    ).show()
-//                                }
-//                            }
-//                        }
-//                    }
+                    addGoalViewModel.addGoal(
+                        goalImage= base64String ?: "",
+                        goalTitle=  goal.title ?: "",
+                        goalAmount= goal.amount,
+                        goalDescription= goal.description ?: "",
+                        goalCategory= goal.category ?: "",
+                        goalPeriod= goal.period.toInt(),
+                        goalDateStarted= goal.dateStarted ?: "",
+                        goalDailySave= goal.dailySavingAmount
+                    ).observe(viewLifecycleOwner){result ->
+                        if (result != null) {
+                            when (result) {
+                                is Result.Loading -> {
+//                                    showLoading(result.state)
+                                }
+                                is Result.Success -> {
+                                    val message = result.data.message
+                                    Toasty.success(
+                                        requireContext(),
+                                        message,
+                                        Toast.LENGTH_SHORT,
+                                        true
+                                    ).show()
+                                    val intent = Intent(requireContext(), HomeActivity::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                    requireActivity().finish()
+                                }
+                                is Result.Failure -> {
+                                    Toasty.error(
+                                        requireContext(),
+                                        result.throwable.message.toString(),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                        }
+                    }
                 }
 
             }

@@ -3,6 +3,8 @@ package com.tms.targetedmoneysaver.utils
 import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -82,4 +84,26 @@ private fun inputStreamToByteArray(inputStream: InputStream): ByteArray {
         buffer.write(data, 0, bytesRead)
     }
     return buffer.toByteArray()
+}
+
+fun convertUriToBase64(context: Context, imageUri: Uri): String? {
+    return try {
+        // Get the input stream of the image from the URI
+        val inputStream: InputStream? = context.contentResolver.openInputStream(imageUri)
+        val bitmap = BitmapFactory.decodeStream(inputStream)
+
+        // Resize the bitmap to reduce its size
+        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 200, 200, true)
+
+        // Convert resized bitmap to Base64
+        val outputStream = ByteArrayOutputStream()
+        resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream)
+        val byteArray = outputStream.toByteArray()
+
+        // Convert byte array to Base64 string
+        Base64.encodeToString(byteArray, Base64.DEFAULT)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
+    }
 }
