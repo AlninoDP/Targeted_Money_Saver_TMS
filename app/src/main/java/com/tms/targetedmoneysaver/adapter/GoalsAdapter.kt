@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.tms.targetedmoneysaver.data.local.entity.GoalEntity
 import com.tms.targetedmoneysaver.databinding.GoalItemBinding
 import com.tms.targetedmoneysaver.ui.goaldetails.GoalDetailsActivity
@@ -19,6 +20,10 @@ class GoalsAdapter : ListAdapter<GoalEntity, GoalsAdapter.GoalViewHolder>(GoalsD
             val goalPercentage = (daysSaved.toDouble() / goalPeriod.toDouble()) * 100
 
             // TODO: SET IMAGE
+            Glide.with(itemView.context)
+                .load(goal.image)
+                .into(binding.itemGoalImage)
+
             binding.itemGoalName.text = goal.title
             binding.goalProgressBar.setProgressPercentage(goalPercentage)
 

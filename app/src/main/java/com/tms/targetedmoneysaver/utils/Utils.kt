@@ -57,35 +57,6 @@ fun getImageUriForPreQ(context: Context): Uri {
     //content://package_name.fileprovider/my_images/MyCamera/20230825_133659.jpg
 }
 
-
-fun uriToBase64(contentResolver: ContentResolver, uri: Uri): String? {
-    return try {
-        // Open the input stream for the given URI
-        val inputStream: InputStream? = contentResolver.openInputStream(uri)
-        if (inputStream != null) {
-            // Convert input stream to a byte array
-            val byteArray = inputStreamToByteArray(inputStream)
-            // Encode byte array to Base64
-            Base64.encodeToString(byteArray, Base64.DEFAULT)
-        } else {
-            null
-        }
-    } catch (e: Exception) {
-        e.printStackTrace()
-        null
-    }
-}
-
-private fun inputStreamToByteArray(inputStream: InputStream): ByteArray {
-    val buffer = ByteArrayOutputStream()
-    val data = ByteArray(1024)
-    var bytesRead: Int
-    while (inputStream.read(data).also { bytesRead = it } != -1) {
-        buffer.write(data, 0, bytesRead)
-    }
-    return buffer.toByteArray()
-}
-
 fun convertUriToBase64(context: Context, imageUri: Uri): String? {
     return try {
         // Get the input stream of the image from the URI
@@ -101,7 +72,7 @@ fun convertUriToBase64(context: Context, imageUri: Uri): String? {
         val byteArray = outputStream.toByteArray()
 
         // Convert byte array to Base64 string
-        Base64.encodeToString(byteArray, Base64.DEFAULT)
+        "data:image/jpeg;base64," + Base64.encodeToString(byteArray, Base64.DEFAULT)
     } catch (e: Exception) {
         e.printStackTrace()
         null

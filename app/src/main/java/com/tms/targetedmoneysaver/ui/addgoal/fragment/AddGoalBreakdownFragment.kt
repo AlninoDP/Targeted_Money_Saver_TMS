@@ -1,6 +1,5 @@
 package com.tms.targetedmoneysaver.ui.addgoal.fragment
 
-import android.content.ContentResolver
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -16,7 +15,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.data.Result
 import com.tms.targetedmoneysaver.databinding.FragmentAddGoalBreakdownBinding

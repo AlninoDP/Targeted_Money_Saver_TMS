@@ -66,6 +66,7 @@ class GoalDetailsActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT,
                                     true
                                 ).show()
+
                                 finish()
                             }
 
