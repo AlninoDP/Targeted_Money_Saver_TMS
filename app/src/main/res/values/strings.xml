@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">TMS</string>
 
-
-    <string name="menu_profile_title">Profile</string>
-
     <string name="next">Next</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
@@ -28,7 +25,7 @@
     <string name="btm_nav_home">Home</string>
     <string name="btm_nav_your_goal">Goals</string>
     <string name="btm_nav_goal_history">History</string>
-    <string name="btm_nav_profile">Profile</string>
+    <string name="btm_nav_setting">Setting</string>
 
 
     <!-- Description Image Text -->
@@ -123,15 +120,17 @@
     <string name="goal_detail_daily_saving_amount_label">Daily Saving Amount</string>
     <string name="goal_detail_daily_saving_amount">Daily Saving: Rp.%d</string>
     <string name="goal_detail_button_save_today">Save Today</string>
-
+    <string name="goal_detail_goal_completed_text">Goal Completed</string>
 
     <string name="empty_goal_data">Uh oh, you do not have any goals that can be displayed right now, try adding a new goals</string>
     <string name="empty_goal_history_data">You have not completed any of your goals, but that doesn\'t mean you won\'t. Keep going!!</string>
 
     <string name="goal_quote_1">Almost there, keep it up</string>
+    <string name="goal_completed_quote">You have completed this goal</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="setting_about_app_text">About App</string>
+    <string name="setting_daily_notification_text">Daily Notification</string>
+    <string name="setting_language_text">Language\nIndo</string>
 
 
 </resources>

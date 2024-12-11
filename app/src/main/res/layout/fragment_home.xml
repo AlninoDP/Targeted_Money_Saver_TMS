@@ -24,15 +24,6 @@
             android:contentDescription="@string/application_logo_description"
             android:src="@drawable/logo_w_text_variance_3" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/menu_setting_description"
-            android:scaleType="fitEnd"
-            android:src="@drawable/ic_settings"
-            app:tint="@color/white" />
     </androidx.appcompat.widget.Toolbar>
 
     <ProgressBar
@@ -110,6 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner_container"
         android:orientation="vertical"

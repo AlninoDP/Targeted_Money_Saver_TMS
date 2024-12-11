@@ -29,7 +29,7 @@ class HistoryFragment : Fragment() {
             factory
         }
 
-        val adapter = GoalsAdapter()
+        val adapter = GoalsAdapter("HistoryFragment")
 
         historyViewModel.getCompletedGoals().observe(viewLifecycleOwner) { result ->
             if (result.isEmpty()) {

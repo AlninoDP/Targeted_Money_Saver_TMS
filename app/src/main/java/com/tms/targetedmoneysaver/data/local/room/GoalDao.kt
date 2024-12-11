@@ -10,13 +10,13 @@ import com.tms.targetedmoneysaver.data.local.entity.GoalEntity
 @Dao
 interface GoalDao {
 
-    @Query("SELECT * FROM goals WHERE days_remaining > 0")
+    @Query("SELECT * FROM goals ")
     fun getAllGoals(): LiveData<List<GoalEntity>>
 
-    @Query("SELECT * FROM goals ORDER BY days_saved DESC")
+    @Query("SELECT * FROM goals WHERE days_remaining > 0 ORDER BY days_saved DESC")
     fun getMostSavedGoals(): LiveData<List<GoalEntity>>
 
-    @Query("SELECT * FROM goals WHERE days_remaining = (SELECT MIN(days_remaining) FROM goals)")
+    @Query("SELECT * FROM goals WHERE days_remaining = (SELECT MIN(days_remaining) FROM goals WHERE days_remaining > 0)")
     fun getClosestGoal(): LiveData<GoalEntity>
 
     @Query("SELECT * FROM goals ORDER BY date_started DESC")

@@ -31,7 +31,7 @@ class GoalsFragment : Fragment() {
             factory
         }
 
-        val adapter = GoalsAdapter()
+        val adapter = GoalsAdapter("GoalsFragment")
 
         goalViewModel.getAllGoals().observe(viewLifecycleOwner) { result ->
             if (result != null) {

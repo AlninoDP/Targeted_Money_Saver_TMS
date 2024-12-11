@@ -64,7 +64,7 @@ fun convertUriToBase64(context: Context, imageUri: Uri): String? {
         val bitmap = BitmapFactory.decodeStream(inputStream)
 
         // Resize the bitmap to reduce its size
-        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 200, 200, true)
+        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 250, 200, true)
 
         // Convert resized bitmap to Base64
         val outputStream = ByteArrayOutputStream()

@@ -20,9 +20,9 @@
         android:title="@string/btm_nav_goal_history"/>
 
     <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_account"
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_settings"
         android:enabled="true"
-        android:title="@string/btm_nav_profile" />
+        android:title="@string/btm_nav_setting" />
 
 </menu>

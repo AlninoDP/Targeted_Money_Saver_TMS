@@ -1,11 +1,13 @@
 package com.tms.targetedmoneysaver.ui.home.fragment.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.data.Result
 import com.tms.targetedmoneysaver.data.local.entity.GoalEntity
@@ -38,7 +40,12 @@ class HomeFragment : Fragment() {
                             showEmptyState()
                         } else {
                             homeViewModel.getClosestGoal().observe(viewLifecycleOwner) {
-                                setUpClosestGoal(it)
+                                if (it == null) {
+                                    showEmptyState()
+                                    Log.d("NULL", "CLOSEST GOAL NULL")
+                                } else {
+                                    setUpClosestGoal(it)
+                                }
                             }
                         }
                     }
@@ -57,6 +64,9 @@ class HomeFragment : Fragment() {
 
     private fun setUpClosestGoal(goalEntity: GoalEntity) {
         binding.apply {
+            Glide.with(this@HomeFragment)
+                .load(goalEntity.image)
+                .into(closestGoalItem)
             closestGoalTitle.text = goalEntity.title
             homeTotalDaysSaved.text =
                 getString(R.string.total_days_saved, goalEntity.daysSaved)

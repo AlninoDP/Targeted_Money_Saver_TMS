@@ -1,5 +1,6 @@
 package com.tms.targetedmoneysaver.ui.goaldetails
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -10,11 +11,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.data.Result
 import com.tms.targetedmoneysaver.data.local.entity.GoalEntity
 import com.tms.targetedmoneysaver.databinding.ActivityGoalDetailsBinding
 import com.tms.targetedmoneysaver.ui.ViewModelFactory
+import com.tms.targetedmoneysaver.ui.home.HomeActivity
 import com.tms.targetedmoneysaver.utils.addDaysToDate
 import es.dmoral.toasty.Toasty
 
@@ -50,6 +53,11 @@ class GoalDetailsActivity : AppCompatActivity() {
 
         goalEntity?.let {
             setGoalDetail(it)
+
+            if (it.daysRemaining == 0){
+                binding.goalDetailSaveTodayButton.isEnabled = false
+                binding.goalDetailSaveTodayButton.text = getString(R.string.goal_detail_goal_completed_text)
+            }
         }
 
         binding.goalDetailSaveTodayButton.setOnClickListener {
@@ -67,6 +75,9 @@ class GoalDetailsActivity : AppCompatActivity() {
                                     true
                                 ).show()
 
+                               val intent = Intent(this@GoalDetailsActivity, HomeActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                startActivity(intent)
                                 finish()
                             }
 
@@ -90,6 +101,10 @@ class GoalDetailsActivity : AppCompatActivity() {
         binding.apply {
             // TODO: SET IMAGE
             with(goal) {
+                Glide.with(this@GoalDetailsActivity)
+                    .load(image)
+                    .into(goalDetailImage)
+
                 goalDetailDaysProgressBar.progressMax = period.toFloat()
                 goalDetailDaysProgressBar.progress = daysSaved.toFloat()
 

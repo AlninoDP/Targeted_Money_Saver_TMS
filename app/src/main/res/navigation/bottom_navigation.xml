@@ -11,10 +11,10 @@
         android:label="@string/btm_nav_home"
         tools:layout="@layout/fragment_home"/>
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.tms.targetedmoneysaver.ui.home.fragment.profile.ProfileFragment"
-        android:label="@string/btm_nav_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/navigation_setting"
+        android:name="com.tms.targetedmoneysaver.ui.home.fragment.setting.SettingFragment"
+        android:label="@string/btm_nav_setting"
+        tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/navigation_your_goals"
         android:name="com.tms.targetedmoneysaver.ui.home.fragment.goals.GoalsFragment"
