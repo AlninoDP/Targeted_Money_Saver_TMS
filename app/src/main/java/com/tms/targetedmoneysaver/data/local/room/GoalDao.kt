@@ -19,11 +19,11 @@ interface GoalDao {
     @Query("SELECT * FROM goals WHERE days_remaining = (SELECT MIN(days_remaining) FROM goals WHERE days_remaining > 0)")
     fun getClosestGoal(): LiveData<GoalEntity>
 
-    @Query("SELECT * FROM goals ORDER BY date_started DESC")
-    fun getRecentGoals(): LiveData<List<GoalEntity>>
-
     @Query("SELECT * FROM goals WHERE days_remaining = 0")
     fun getCompletedGoals(): LiveData<List<GoalEntity>>
+
+    @Query("SELECT * FROM goals WHERE days_remaining = (SELECT MIN(days_remaining) FROM goals WHERE days_remaining > 0) ")
+    suspend fun getClosestGoalForNotification(): GoalEntity?
 
     @Query("DELETE FROM goals")
     suspend fun deleteAllGoals()

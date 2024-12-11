@@ -108,10 +108,6 @@ class MainRepository(
         return goalDao.getCompletedGoals()
     }
 
-    fun getRecentGoals(): LiveData<List<GoalEntity>> {
-        return goalDao.getRecentGoals()
-    }
-
     fun getMostSavedGoals(): LiveData<List<GoalEntity>> {
         return goalDao.getMostSavedGoals()
     }

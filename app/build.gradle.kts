@@ -75,10 +75,10 @@ dependencies {
     implementation(libs.roundedprogressbar)
     implementation(libs.circularprogressbar)
 
-    // Firebase Bom
+    // Firebase
     implementation(platform(libs.firebase.bom))
-
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.ml.modeldownloader)
 
     // Retrofit Core, Retrofit Converter Gson, Okhttp Interceptor
     implementation(libs.retrofit)

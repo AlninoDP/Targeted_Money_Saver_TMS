@@ -65,7 +65,8 @@ class ViewModelFactory private constructor(
             ) as T
 
             modelClass.isAssignableFrom(SettingViewModel::class.java) -> SettingViewModel(
-                authRepository, userPreferences
+                authRepository,
+                userPreferences
             ) as T
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
