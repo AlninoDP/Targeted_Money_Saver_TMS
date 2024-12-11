@@ -25,16 +25,28 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <ProgressBar
+        android:id="@+id/setting_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
+        app:layout_constraintVertical_bias="0.89" />
+
     <LinearLayout
         android:id="@+id/settings_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar">
 
         <LinearLayout
             android:id="@+id/setting_notification_row"
@@ -45,10 +57,10 @@
             <TextView
                 android:id="@+id/tv_notification"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
                 android:background="@drawable/rounded_corner_button_primary"
                 android:drawablePadding="8dp"
                 android:padding="4dp"
@@ -60,10 +72,10 @@
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/sw_notification"
-                android:layout_marginEnd="8dp"
-                app:trackTint="@color/custom_switch_track_color"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:trackTint="@color/custom_switch_track_color" />
 
         </LinearLayout>
 
@@ -86,6 +98,7 @@
             android:id="@+id/tv_language_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/rounded_corner_button_primary"
             android:drawablePadding="8dp"
             android:padding="4dp"
@@ -96,8 +109,20 @@
             app:drawableStartCompat="@drawable/ic_language"
             app:drawableTint="@color/white" />
 
+        <TextView
+            android:id="@+id/btn_sign_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_corner_button_red"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:text="@string/setting_sign_out_text"
+            android:textColor="@color/onPrimary"
+            android:textSize="18sp"
+            app:drawableStartCompat="@drawable/ic_logout"
+            app:drawableTint="@color/white" />
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

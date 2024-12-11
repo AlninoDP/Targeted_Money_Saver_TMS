@@ -38,6 +38,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         val viewModelFactory = ViewModelFactory.getInstance(this)
         loginViewModel = viewModels<LoginViewModel> { viewModelFactory }.value
 
+        // Delete past token
+        loginViewModel.deleteToken()
+
         loginViewModel.loginResult.observe(this@LoginActivity) { result ->
             when (result) {
                 is Loading -> {
@@ -84,7 +87,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.btn_google_login -> {
                 // TODO: Google Login Logic
-                loginViewModel.getToken()
             }
 
             R.id.tv_forget_password -> {

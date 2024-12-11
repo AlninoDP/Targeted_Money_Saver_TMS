@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputLayout
-import com.tms.targetedmoneysaver.MainActivity
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.data.Result.Failure
 import com.tms.targetedmoneysaver.data.Result.Loading
@@ -19,7 +18,6 @@ import com.tms.targetedmoneysaver.databinding.ActivityRegisterBinding
 import com.tms.targetedmoneysaver.ui.ViewModelFactory
 import com.tms.targetedmoneysaver.ui.home.HomeActivity
 import com.tms.targetedmoneysaver.ui.login.LoginActivity
-import com.tms.targetedmoneysaver.ui.login.LoginViewModel
 import es.dmoral.toasty.Toasty
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {

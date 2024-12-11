@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TMS</string>
+    <string name="app_name">Targeted Money Saver</string>
 
     <string name="next">Next</string>
     <string name="email_hint">Email</string>
@@ -20,6 +20,7 @@
     <string name="app_bar_goals_title">Your Goals</string>
     <string name="app_bar_add_goal_title">Add Goal</string>
     <string name="app_bar_goal_detail_title">Goal Detail</string>
+    <string name="app_bar_about_app_title">About App</string>
 
     <!-- Bottom Nav Bar -->
     <string name="btm_nav_home">Home</string>
@@ -130,7 +131,13 @@
 
     <string name="setting_about_app_text">About App</string>
     <string name="setting_daily_notification_text">Daily Notification</string>
-    <string name="setting_language_text">Language\nIndo</string>
+    <string name="setting_language_text">Language\n%s</string>
+    <string name="setting_sign_out_text">Sign Out</string>
+
+    <string name="about_app_text">
+        TMS: Targeted Money Saver helps users save for specific goals, like buying a gadget or going on a trip. Users can upload an image, add details like the goal title, amount, and description, and set a timeline. The app then calculates the daily savings needed and tracks progress with an interactive bar, showing how close they are to reaching their target.
+        \n\nThe app is designed to make saving easy and encourages better financial habits, especially for students and young professionals. Its simple interface motivates users to save regularly, turning the process into a rewarding experience.
+    </string>
 
 
 </resources>

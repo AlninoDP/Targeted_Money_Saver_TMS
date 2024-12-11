@@ -99,7 +99,6 @@ class GoalDetailsActivity : AppCompatActivity() {
 
     private fun setGoalDetail(goal: GoalEntity) {
         binding.apply {
-            // TODO: SET IMAGE
             with(goal) {
                 Glide.with(this@GoalDetailsActivity)
                     .load(image)

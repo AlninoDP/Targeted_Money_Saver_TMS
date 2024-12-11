@@ -13,6 +13,7 @@ import com.tms.targetedmoneysaver.ui.goaldetails.GoalDetailsViewModel
 import com.tms.targetedmoneysaver.ui.home.fragment.goals.GoalsViewModel
 import com.tms.targetedmoneysaver.ui.home.fragment.history.HistoryViewModel
 import com.tms.targetedmoneysaver.ui.home.fragment.home.HomeViewModel
+import com.tms.targetedmoneysaver.ui.home.fragment.setting.SettingViewModel
 import com.tms.targetedmoneysaver.ui.login.LoginViewModel
 import com.tms.targetedmoneysaver.ui.register.RegisterViewModel
 
@@ -28,7 +29,7 @@ class ViewModelFactory private constructor(
         fun getInstance(context: Context): ViewModelFactory =
             instance ?: synchronized(this) {
                 val mainRepository = Injection.provideRepository(context)
-                val authRepository = Injection.provideAuthRepository(context)
+                val authRepository = Injection.provideAuthRepository()
                 val preferences = UserPreferences.getInstance(context.datastore)
                 instance ?: ViewModelFactory(mainRepository, authRepository, preferences)
             }.also { instance = it }
@@ -48,10 +49,24 @@ class ViewModelFactory private constructor(
             ) as T
 
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(mainRepository) as T
+
             modelClass.isAssignableFrom(GoalsViewModel::class.java) -> GoalsViewModel(mainRepository) as T
-            modelClass.isAssignableFrom(GoalDetailsViewModel::class.java) -> GoalDetailsViewModel(mainRepository) as T
-            modelClass.isAssignableFrom(HistoryViewModel::class.java) -> HistoryViewModel(mainRepository) as T
-            modelClass.isAssignableFrom(AddGoalViewModel::class.java) -> AddGoalViewModel(mainRepository) as T
+
+            modelClass.isAssignableFrom(GoalDetailsViewModel::class.java) -> GoalDetailsViewModel(
+                mainRepository
+            ) as T
+
+            modelClass.isAssignableFrom(HistoryViewModel::class.java) -> HistoryViewModel(
+                mainRepository
+            ) as T
+
+            modelClass.isAssignableFrom(AddGoalViewModel::class.java) -> AddGoalViewModel(
+                mainRepository
+            ) as T
+
+            modelClass.isAssignableFrom(SettingViewModel::class.java) -> SettingViewModel(
+                authRepository, userPreferences
+            ) as T
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

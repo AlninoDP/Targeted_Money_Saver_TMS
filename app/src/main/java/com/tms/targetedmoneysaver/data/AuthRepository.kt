@@ -4,8 +4,7 @@ package com.tms.targetedmoneysaver.data
 import com.google.firebase.auth.FirebaseAuth
 import com.tms.targetedmoneysaver.data.remote.response.AuthResponse
 
-class AuthRepository {
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+class AuthRepository(private val firebaseAuth:FirebaseAuth) {
 
     fun loginUser(
         email: String,
@@ -51,6 +50,16 @@ class AuthRepository {
                     callback(AuthResponse(false, "Register failed" , ""))
                 }
             }
+    }
+
+    fun signOut(callback: (Boolean) -> Unit) {
+        val currentUser = firebaseAuth.currentUser
+        if (currentUser != null) {
+            firebaseAuth.signOut()
+            callback(true)
+        } else {
+            callback(false)
+        }
     }
 
 }

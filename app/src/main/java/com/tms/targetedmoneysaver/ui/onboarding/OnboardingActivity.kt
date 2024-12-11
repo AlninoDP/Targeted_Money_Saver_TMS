@@ -8,7 +8,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.tms.targetedmoneysaver.OnboardingAdapter
+import com.tms.targetedmoneysaver.adapter.OnboardingAdapter
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.component.OnboardingPage
 import com.tms.targetedmoneysaver.databinding.ActivityOnboardingBinding

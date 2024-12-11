@@ -36,12 +36,8 @@ class LoginViewModel(
 
 
 
-    // TODO: DELETE THIS
-    fun getToken() {
+    fun deleteToken() {
         viewModelScope.launch {
-            userPreferences.getUserToken().collect {
-                Log.d("QWE", "beforeToken: $it")
-            }
             userPreferences.deleteUserToken()
         }
     }

@@ -1,6 +1,7 @@
 package com.tms.targetedmoneysaver.data.di
 
 import android.content.Context
+import com.google.firebase.auth.FirebaseAuth
 import com.tms.targetedmoneysaver.data.AuthRepository
 import com.tms.targetedmoneysaver.data.MainRepository
 import com.tms.targetedmoneysaver.data.local.datastore
@@ -16,7 +17,8 @@ object Injection {
         return MainRepository(apiService, dao)
     }
 
-    fun provideAuthRepository(context:Context): AuthRepository {
-        return AuthRepository()
+    fun provideAuthRepository( ): AuthRepository {
+        val firebaseAuth = FirebaseAuth.getInstance()
+        return AuthRepository(firebaseAuth)
     }
 }

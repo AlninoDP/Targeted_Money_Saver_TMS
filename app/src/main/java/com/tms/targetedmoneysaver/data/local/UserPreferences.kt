@@ -3,6 +3,7 @@ package com.tms.targetedmoneysaver.data.local
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -34,9 +35,22 @@ class UserPreferences(
         }
     }
 
+    fun getDailyNotificationSetting() :Flow<Boolean> {
+        return datastore.data.map { preferences ->
+            preferences[DAILY_NOTIFICATION_KEY] ?: false
+        }
+    }
+
+    suspend fun saveDailyNotificationSetting(isDailyNotificationActive: Boolean) {
+        datastore.edit { preferences ->
+            preferences[DAILY_NOTIFICATION_KEY] = isDailyNotificationActive
+        }
+    }
+
     companion object {
 
         private val ID_TOKEN_KEY = stringPreferencesKey("id_token")
+        private val DAILY_NOTIFICATION_KEY = booleanPreferencesKey("notification_settings")
 
         @Volatile
         private var INSTANCE: UserPreferences? = null
