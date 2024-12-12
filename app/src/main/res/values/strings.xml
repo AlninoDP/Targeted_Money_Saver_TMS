@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Targeted Money Saver</string>
 
+    <!-- Auth Page Text -->
     <string name="next">Next</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
@@ -8,19 +9,47 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="continue_with">or continue with</string>
+    <string name="add_goal_button_text">New Goal</string>
 
+    <!-- Email and Password Confirmation Text -->
     <string name="invalid_email">Invalid Email</string>
     <string name="invalid_password">Password must be at least 8 characters</string>
+    <string name="password_not_match">Password does not match</string>
+
+    <!-- AppBar -->
+    <string name="app_bar_home_title">Home</string>
+    <string name="app_bar_goals_title">Your Goals</string>
+    <string name="app_bar_add_goal_title">Add Goal</string>
+    <string name="app_bar_goal_detail_title">Goal Detail</string>
+    <string name="app_bar_about_app_title">About App</string>
+
+    <!-- Bottom Nav Bar -->
+    <string name="btm_nav_home">Home</string>
+    <string name="btm_nav_your_goal">Goals</string>
+    <string name="btm_nav_goal_history">History</string>
+    <string name="btm_nav_setting">Setting</string>
 
     <!-- Description Image Text -->
+    <string name="application_logo_description">TMS Logo</string>
     <string name="onboarding_image_description">Goal Saving</string>
     <string name="money_image_description">Money Background</string>
     <string name="google_login_description">Login With Google</string>
+    <string name="chosen_image_description">Image Chosen</string>
+    <string name="closest_goal_image_description">Closest Goal Image</string>
+    <string name="empty_image_description">Empty Image</string>
+    <string name="menu_image_description">Profile Image</string>
+    <string name="menu_setting_description">Go To Settings</string>
+    <string name="goal_image_description">Goal Image</string>
 
     <!-- Onboarding Text -->
     <string name="onboarding_Text_1">Reach Your Goal, One Save at a Time</string>
     <string name="onboarding_Text_2">Your Goals Are Worth Every Coin.</string>
     <string name="onboarding_Text_3">Your Dream is Within Reach, Start Saving Today</string>
+
+    <!-- Home Page Text -->
+    <string name="home_header_text">Welcome Back !</string>
+    <string name="home_sub_header_text">Your Closest Goal</string>
+    <string name="home_sub_sub_header_text">Your Recent Goals</string>
 
     <!-- Login Text -->
     <string name="login_page_header_text">Welcome Aboard!</string>
@@ -31,4 +60,90 @@
     <string name="register_page_header_text">Create an Account</string>
     <string name="register_page_sub_header_text">Please register your account!</string>
     <string name="have_account">already have an account?</string>
+
+    <!-- Setting Page Text -->
+    <string name="setting_about_app_text">About App</string>
+    <string name="setting_daily_notification_text">Daily Notification</string>
+    <string name="setting_language_text">Language\n%s</string>
+    <string name="setting_sign_out_text">Sign Out</string>
+
+    <!-- Add Goal Text -->
+    <string name="add_goal">Add Goal</string>
+    <string name="add_goal_image_header_text">Provide Information For Your Goal</string>
+    <string name="add_goal_image_button_clear_image">Clear Image</string>
+    <string name="add_goal_image_button_confirm">Confirm</string>
+
+    <string name="goal_title_label">Title</string>
+    <string name="goal_amount_label">Amount</string>
+    <string name="goal_description_label">Description</string>
+    <string name="goal_category_label">Category</string>
+    <string name="goal_title_hint">Goal Title</string>
+    <string name="goal_amount_hint">Goal Amount</string>
+    <string name="goal_description_hint">Goal Description</string>
+    <string name="goal_category_hint">Goal Category</string>
+
+
+    <!-- Goal Period Text -->
+    <string name="goal_period_period">How Many Days Do You Want To Achieve This Goal?</string>
+    <string name="goal_period_total_days">%.0f Days</string>
+    <string name="goal_period_next_steps">Next Steps</string>
+    <string name="goal_period_go_back">Go Back</string>
+    <string name="goal_period_add_one_week">1 Week</string>
+    <string name="goal_period_add_one_month">1 Month</string>
+
+    <!-- Goal Breakdown Text -->
+    <string name="goal_breakdown_header_text">Here is Breakdown of Your Goal:</string>
+    <string name="goal_breakdown_date_started_label">Started</string>
+    <string name="goal_breakdown_date_started_text">20/11/2024</string>
+    <string name="goal_breakdown_date_finished_text">20/11/2025</string>
+    <string name="goal_breakdown_daily_saving_label">Daily Saving Amount</string>
+    <string name="goal_breakdown_daily_saving_text">Rp. %d</string>
+    <string name="goal_breakdown_start_saving">Start Saving</string>
+    <string name="goal_breakdown_period_label">Period</string>
+    <string name="goal_breakdown_period">%d Days</string>
+
+
+    <string name="total_days_saved_label">Total Days Saved :</string>
+    <string name="total_days_saved">%d Days</string>
+    <string name="total_money_saved_label">Total Money Saved :</string>
+    <string name="total_money_saved">Rp. %d</string>
+    <string name="remaining_days_label">Remaining Days :</string>
+    <string name="remaining_days">%d Days</string>
+
+    <!-- Goal Details Text -->
+    <string name="goal_detail_header_text">Goal Progress</string>
+    <string name="goal_detail_sub_header_text">Goal Detail</string>
+    <string name="goal_detail_progress_text">%1$d / %2$d\nDays</string>
+    <string name="goal_detail_total_days_saved">Days Saved: %d</string>
+    <string name="goal_detail_total_money_saved">Money Saved: Rp.%d</string>
+    <string name="goal_detail_remaining_days">Remaining Days: %d</string>
+    <string name="goal_detail_item_price_label">Price</string>
+    <string name="goal_detail_item_price">Rp. %d</string>
+    <string name="goal_detail_date_started_label">Date Started</string>
+    <string name="goal_detail_date_started">4/12/2024</string>
+    <string name="goal_detail_date_finish_label">Estimation Completion Date</string>
+    <string name="goal_detail_date_finish">1/1/2025</string>
+    <string name="goal_detail_daily_saving_amount_label">Daily Saving Amount</string>
+    <string name="goal_detail_daily_saving_amount">Daily Saving: Rp.%d</string>
+    <string name="goal_detail_button_save_today">Save Today</string>
+    <string name="goal_detail_goal_completed_text">Goal Completed</string>
+
+    <string name="goal_quote_1">Almost there, keep it up</string>
+    <string name="goal_completed_quote">You have completed this goal</string>
+
+    <string name="about_app_text">
+        TMS: Targeted Money Saver helps users save for specific goals, like buying a gadget or going on a trip. Users can upload an image, add details like the goal title, amount, and description, and set a timeline. The app then calculates the daily savings needed and tracks progress with an interactive bar, showing how close they are to reaching their target.
+        \n\nThe app is designed to make saving easy and encourages better financial habits, especially for students and young professionals. Its simple interface motivates users to save regularly, turning the process into a rewarding experience.
+    </string>
+
+    <!-- Empty Data State Text -->
+    <string name="empty_goal_data">Uh oh, you do not have any goals that can be displayed right now, try adding a new goals</string>
+    <string name="empty_goal_history_data">You have not completed any of your goals, but that doesn\'t mean you won\'t. Keep going!!</string>
+
+    <!-- Tflite Model Text -->
+    <string name="firebaseml_model_download_failed">Model download failed, please check your connection.</string>
+    <string name="no_tflite_interpreter_loaded">No TFLite interpreter loaded</string>
+    <string name="tflite_is_not_initialized_yet">TfLite is not initialized yet</string>
+
+
 </resources>

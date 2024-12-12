@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/register_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.register.RegisterActivity">
@@ -28,6 +28,17 @@
                 android:src="@drawable/money_background" />
 
         </FrameLayout>
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/register_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
 
         <!-- Header Text -->
         <TextView
@@ -101,7 +112,7 @@
                 android:id="@+id/et_register_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_password"
+                android:drawableStart="@drawable/ic_pass_key"
                 android:drawablePadding="16dp"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword" />
@@ -124,7 +135,7 @@
                 android:id="@+id/et_register_password_confirmation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_password"
+                android:drawableStart="@drawable/ic_pass_key"
                 android:drawablePadding="16dp"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword" />
@@ -153,7 +164,7 @@
             android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toStartOf="@+id/tv_other_login"
             app:layout_constraintStart_toStartOf="@+id/btn_sign_up"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
+            app:layout_constraintTop_toBottomOf="@+id/register_progress_bar" />
 
         <TextView
             android:id="@id/tv_other_login"
@@ -164,7 +175,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
+            app:layout_constraintTop_toBottomOf="@+id/register_progress_bar" />
 
         <View
             android:id="@+id/right_line"
@@ -175,7 +186,7 @@
             android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="@+id/btn_sign_up"
             app:layout_constraintStart_toEndOf="@+id/tv_other_login"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
+            app:layout_constraintTop_toBottomOf="@+id/register_progress_bar" />
 
         <!-- Google Login Button -->
         <ImageView

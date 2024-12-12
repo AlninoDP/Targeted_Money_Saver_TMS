@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.tms.targetedmoneysaver.ui.home.fragment.home.HomeFragment"
+        android:label="@string/btm_nav_home"
+        tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.tms.targetedmoneysaver.ui.home.fragment.setting.SettingFragment"
+        android:label="@string/btm_nav_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/navigation_your_goals"
+        android:name="com.tms.targetedmoneysaver.ui.home.fragment.goals.GoalsFragment"
+        android:label="@string/btm_nav_your_goal"
+        tools:layout="@layout/fragment_goals" />
+    <fragment
+        android:id="@+id/navigation_goal_history"
+        android:name="com.tms.targetedmoneysaver.ui.home.fragment.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+
+</navigation>

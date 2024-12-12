@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.addgoal.fragment.AddGoalPeriodFragment">
+
+    <!--  AppBar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_bar_add_goal_title"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Chosen Image -->
+    <ImageView
+        android:id="@+id/addGoal_image_chosen"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/chosen_image_description"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
+        tools:src="@drawable/money_background" />
+
+    <!-- Label Title -->
+    <TextView
+        android:id="@+id/tv_goal_title_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/goal_title_label"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addGoal_image_chosen" />
+
+    <!-- Goal Title -->
+    <TextView
+        android:id="@+id/tv_goal_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:maxLines="3"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_goal_title_label"
+        app:layout_constraintStart_toStartOf="@+id/tv_goal_title_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_goal_title_label"
+        tools:text="@string/goal_title_hint" />
+
+    <!-- Label Amount -->
+    <TextView
+        android:id="@+id/tv_goal_amount_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/goal_amount_label"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_goal_title" />
+
+    <!-- Goal Amount -->
+    <TextView
+        android:id="@+id/tv_goal_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_goal_amount_label"
+        app:layout_constraintStart_toStartOf="@+id/tv_goal_amount_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_goal_amount_label"
+        tools:text="@string/goal_amount_hint" />
+
+    <!-- Label Description -->
+    <TextView
+        android:id="@+id/tv_goal_description_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/goal_description_label"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_goal_amount" />
+
+    <!-- Goal Description -->
+    <TextView
+        android:id="@+id/tv_goal_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_goal_description_label"
+        app:layout_constraintStart_toStartOf="@+id/tv_goal_description_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_goal_description_label"
+        tools:text="@string/goal_description_hint" />
+
+    <!-- Label Category -->
+    <TextView
+        android:id="@+id/tv_goal_category_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/goal_category_label"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_goal_description" />
+
+    <!-- Goal Category -->
+    <TextView
+        android:id="@+id/tv_goal_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_goal_category_label"
+        app:layout_constraintStart_toStartOf="@+id/tv_goal_category_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_goal_category_label"
+        tools:text="@string/goal_category_hint" />
+
+    <!-- Period Label Text -->
+    <TextView
+        android:id="@+id/addGoal_tv_goal_period"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:labelFor="@+id/addGoal_period_slider"
+        android:text="@string/goal_period_period"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_goal_category" />
+
+    <LinearLayout
+        android:id="@+id/addGoal_btn_add_periods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addGoal_tv_goal_period">
+
+        <TextView
+            android:id="@+id/addGoals_btn_add_weeks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/rounded_corner_button_primary"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="@string/goal_period_add_one_week"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/addGoals_btn_add_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/rounded_corner_button_primary"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="@string/goal_period_add_one_month"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <!-- Slider -->
+    <com.google.android.material.slider.Slider
+        android:id="@+id/addGoal_period_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:stepSize="1.0"
+        android:valueFrom="1.0"
+        android:valueTo="365.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addGoal_btn_add_periods"
+        app:thumbHeight="25dp"
+        app:thumbWidth="25dp"
+        app:tickColorActive="@color/secondary"
+        app:tickColorInactive="@color/white"
+        app:trackColor="@color/primary" />
+
+    <!-- Slider Value -->
+    <TextView
+        android:id="@+id/addGoal_tv_total_days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addGoal_period_slider"
+        tools:text="@string/goal_period_total_days" />
+
+    <!-- Button Get Back -->
+    <TextView
+        android:id="@+id/addGoal_btn_next_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_corner_button_primary"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:text="@string/goal_period_next_steps"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

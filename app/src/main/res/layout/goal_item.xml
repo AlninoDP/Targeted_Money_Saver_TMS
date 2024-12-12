@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/pristine_white"
+    app:strokeWidth="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/item_goal_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/closest_goal_image_description"
+            android:scaleType="fitCenter"
+            android:src="@drawable/item_placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_goal_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/goal_title_hint"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/item_goal_image"
+            app:layout_constraintStart_toStartOf="@+id/item_goal_image"
+            app:layout_constraintTop_toBottomOf="@+id/item_goal_image" />
+
+        <TextView
+            android:id="@+id/goal_quote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/goal_quote_1"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@+id/item_goal_image"
+            app:layout_constraintStart_toStartOf="@+id/item_goal_image"
+            app:layout_constraintTop_toBottomOf="@+id/item_goal_name" />
+
+        <com.mackhartley.roundedprogressbar.RoundedProgressBar
+            android:id="@+id/goal_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="8dp"
+            app:rpbProgressTextColor="@color/onSecondary"
+            app:layout_constraintEnd_toEndOf="@+id/item_goal_name"
+            app:layout_constraintStart_toStartOf="@+id/item_goal_name"
+            app:layout_constraintTop_toBottomOf="@+id/goal_quote"
+            app:rpbBackgroundColor="@color/primary"
+            app:rpbBackgroundTextColor="@color/onPrimary"
+            app:rpbCornerRadius="8dp"
+            app:rpbProgressColor="@color/secondary" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,13 +1,16 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources >
     <!-- Base application theme. -->
     <style name="Base.Theme.TargetedMoneySaver" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
+        <item name="fontFamily">@font/poppins</item>
+
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/onPrimary</item>
         <item name="colorSecondary">@color/secondary</item>
         <item name="colorOnSecondary">@color/onSecondary</item>
+
     </style>
 
     <!-- Input Field Rounded Corners Style -->
@@ -16,6 +19,27 @@
         <item name="boxCornerRadiusTopEnd">16dp</item>
         <item name="boxCornerRadiusBottomStart">16dp</item>
         <item name="boxCornerRadiusBottomEnd">16dp</item>
+    </style>
+
+    <!-- Splash Screen Style -->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!-- Set the splash screen background, animated icon, and animation
+        duration. -->
+               <item name="windowSplashScreenBackground">@color/pristine_white</item>
+        <!-- Splash Screen Logo -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_w_text</item>
+        <!-- Splash Screen Duration -->
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+
+        <!-- Set the theme of the Activity that directly follows your splash
+        screen. This is required. -->
+        <item name="postSplashScreenTheme">@style/Theme.TargetedMoneySaver</item>
+    </style>
+
+    <!-- Bottom Nav Active Indicator Style -->
+    <style name="CustomActiveIndicatorStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/light_grey</item>
+         <item name="shapeAppearance">@style/ShapeAppearance.Material3.SmallComponent</item>
     </style>
 
 

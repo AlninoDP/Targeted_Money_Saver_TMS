@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.fragment.setting.SettingFragment">
+
+    <!--  AppBar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:contentDescription="@string/application_logo_description"
+            android:src="@drawable/logo_w_text_variance_3" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ProgressBar
+        android:id="@+id/setting_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
+        app:layout_constraintVertical_bias="0.89" />
+
+    <LinearLayout
+        android:id="@+id/settings_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar">
+
+        <LinearLayout
+            android:id="@+id/setting_notification_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_notification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corner_button_primary"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:text="@string/setting_daily_notification_text"
+                android:textColor="@color/onPrimary"
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/ic_notification"
+                app:drawableTint="@color/white" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/sw_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:trackTint="@color/custom_switch_track_color" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_about_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_corner_button_primary"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:text="@string/setting_about_app_text"
+            android:textColor="@color/onPrimary"
+            android:textSize="18sp"
+            app:drawableEndCompat="@drawable/ic_right"
+            app:drawableStartCompat="@drawable/ic_info"
+            app:drawableTint="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_language_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_corner_button_primary"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:text="@string/setting_language_text"
+            android:textColor="@color/onPrimary"
+            android:textSize="18sp"
+            app:drawableEndCompat="@drawable/ic_right"
+            app:drawableStartCompat="@drawable/ic_language"
+            app:drawableTint="@color/white" />
+
+        <TextView
+            android:id="@+id/btn_sign_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_corner_button_red"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:text="@string/setting_sign_out_text"
+            android:textColor="@color/onPrimary"
+            android:textSize="18sp"
+            app:drawableStartCompat="@drawable/ic_logout"
+            app:drawableTint="@color/white" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

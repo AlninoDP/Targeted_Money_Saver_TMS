@@ -3,7 +3,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/login_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity">
@@ -29,6 +29,16 @@
                 android:src="@drawable/money_background" />
 
         </FrameLayout>
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/login_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_sign_in"/>
 
         <!-- Header Text -->
         <TextView
@@ -102,10 +112,10 @@
                 android:id="@+id/et_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_password"
+                android:drawableStart="@drawable/ic_pass_key"
                 android:drawablePadding="16dp"
                 android:hint="@string/password_hint"
-                android:inputType="textEmailAddress" />
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--  Forgot Password -->
@@ -143,7 +153,7 @@
             android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toStartOf="@+id/tv_other_login"
             app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
+            app:layout_constraintTop_toBottomOf="@+id/login_progress_bar" />
 
         <TextView
             android:id="@id/tv_other_login"
@@ -154,7 +164,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
+            app:layout_constraintTop_toBottomOf="@+id/login_progress_bar" />
 
         <View
             android:id="@+id/right_line"
@@ -165,7 +175,7 @@
             android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="@+id/btn_sign_in"
             app:layout_constraintStart_toEndOf="@+id/tv_other_login"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
+            app:layout_constraintTop_toBottomOf="@+id/login_progress_bar" />
 
         <!-- Google Login Button -->
         <ImageView

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:enabled="true"
+        android:title="@string/btm_nav_home" />
+
+    <item
+        android:id="@+id/navigation_your_goals"
+        android:icon="@drawable/ic_target"
+        android:enabled="true"
+        android:title="@string/btm_nav_your_goal"/>
+
+    <item
+        android:id="@+id/navigation_goal_history"
+        android:icon="@drawable/ic_history"
+        android:enabled="true"
+        android:title="@string/btm_nav_goal_history"/>
+
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_settings"
+        android:enabled="true"
+        android:title="@string/btm_nav_setting" />
+
+</menu>

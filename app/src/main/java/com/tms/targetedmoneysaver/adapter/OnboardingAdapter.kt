@@ -1,4 +1,4 @@
-package com.tms.targetedmoneysaver
+package com.tms.targetedmoneysaver.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
