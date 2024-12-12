@@ -1,6 +1,5 @@
 package com.tms.targetedmoneysaver.ui.register
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,7 +25,6 @@ class RegisterViewModel(
                 viewModelScope.launch {
                     userPreferences.saveUserToken(response.token)
                 }
-                Log.d("AAS", "regis: ${response.token}")
                 _registerResult.value = Result.Success(response.message)
             } else {
                 _registerResult.value = Result.Failure(Exception(response.message))

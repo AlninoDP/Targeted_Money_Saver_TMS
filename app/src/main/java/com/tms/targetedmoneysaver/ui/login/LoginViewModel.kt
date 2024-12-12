@@ -25,7 +25,7 @@ class LoginViewModel(
                 viewModelScope.launch {
                     userPreferences.saveUserToken(response.token)
                 }
-                Log.d("AAS", "gige: ${response.token}")
+                Log.d("LoginViewModel", "Token: ${response.token}")
                 _loginResult.value = Result.Success(response.message)
             } else {
                 _loginResult.value = Result.Failure(Exception(response.message))

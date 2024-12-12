@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Targeted Money Saver</string>
 
+    <!-- Auth Page Text -->
     <string name="next">Next</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
@@ -28,7 +29,6 @@
     <string name="btm_nav_goal_history">History</string>
     <string name="btm_nav_setting">Setting</string>
 
-
     <!-- Description Image Text -->
     <string name="application_logo_description">TMS Logo</string>
     <string name="onboarding_image_description">Goal Saving</string>
@@ -41,15 +41,15 @@
     <string name="menu_setting_description">Go To Settings</string>
     <string name="goal_image_description">Goal Image</string>
 
-    <!-- Home Page Text -->
-    <string name="home_header_text">Welcome Back !</string>
-    <string name="home_sub_header_text">Your Closest Goal</string>
-    <string name="home_sub_sub_header_text">Your Recent Goals</string>
-
     <!-- Onboarding Text -->
     <string name="onboarding_Text_1">Reach Your Goal, One Save at a Time</string>
     <string name="onboarding_Text_2">Your Goals Are Worth Every Coin.</string>
     <string name="onboarding_Text_3">Your Dream is Within Reach, Start Saving Today</string>
+
+    <!-- Home Page Text -->
+    <string name="home_header_text">Welcome Back !</string>
+    <string name="home_sub_header_text">Your Closest Goal</string>
+    <string name="home_sub_sub_header_text">Your Recent Goals</string>
 
     <!-- Login Text -->
     <string name="login_page_header_text">Welcome Aboard!</string>
@@ -61,6 +61,11 @@
     <string name="register_page_sub_header_text">Please register your account!</string>
     <string name="have_account">already have an account?</string>
 
+    <!-- Setting Page Text -->
+    <string name="setting_about_app_text">About App</string>
+    <string name="setting_daily_notification_text">Daily Notification</string>
+    <string name="setting_language_text">Language\n%s</string>
+    <string name="setting_sign_out_text">Sign Out</string>
 
     <!-- Add Goal Text -->
     <string name="add_goal">Add Goal</string>
@@ -123,21 +128,22 @@
     <string name="goal_detail_button_save_today">Save Today</string>
     <string name="goal_detail_goal_completed_text">Goal Completed</string>
 
-    <string name="empty_goal_data">Uh oh, you do not have any goals that can be displayed right now, try adding a new goals</string>
-    <string name="empty_goal_history_data">You have not completed any of your goals, but that doesn\'t mean you won\'t. Keep going!!</string>
-
     <string name="goal_quote_1">Almost there, keep it up</string>
     <string name="goal_completed_quote">You have completed this goal</string>
-
-    <string name="setting_about_app_text">About App</string>
-    <string name="setting_daily_notification_text">Daily Notification</string>
-    <string name="setting_language_text">Language\n%s</string>
-    <string name="setting_sign_out_text">Sign Out</string>
 
     <string name="about_app_text">
         TMS: Targeted Money Saver helps users save for specific goals, like buying a gadget or going on a trip. Users can upload an image, add details like the goal title, amount, and description, and set a timeline. The app then calculates the daily savings needed and tracks progress with an interactive bar, showing how close they are to reaching their target.
         \n\nThe app is designed to make saving easy and encourages better financial habits, especially for students and young professionals. Its simple interface motivates users to save regularly, turning the process into a rewarding experience.
     </string>
+
+    <!-- Empty Data State Text -->
+    <string name="empty_goal_data">Uh oh, you do not have any goals that can be displayed right now, try adding a new goals</string>
+    <string name="empty_goal_history_data">You have not completed any of your goals, but that doesn\'t mean you won\'t. Keep going!!</string>
+
+    <!-- Tflite Model Text -->
+    <string name="firebaseml_model_download_failed">Model download failed, please check your connection.</string>
+    <string name="no_tflite_interpreter_loaded">No TFLite interpreter loaded</string>
+    <string name="tflite_is_not_initialized_yet">TfLite is not initialized yet</string>
 
 
 </resources>

@@ -1,6 +1,6 @@
 package com.tms.targetedmoneysaver.utils
 
-import android.content.ContentResolver
+
 import android.content.ContentValues
 import android.content.Context
 import android.graphics.Bitmap

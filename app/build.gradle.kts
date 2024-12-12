@@ -102,5 +102,10 @@ dependencies {
 
     // Worker
     implementation(libs.androidx.work.runtime)
+
+    // Tflite
+    implementation(libs.play.services.tflite.java)
+    implementation(libs.play.services.tflite.gpu)
+    implementation(libs.play.services.tflite.support)
 }
 

@@ -12,12 +12,3 @@ fun addDaysToDate(dateString: String, daysToAdd: Long): String {
 
     return newDate.format(formatter)
 }
-
-// Utility function to format a date string (d/M/yyyy format)
-fun formatDateFromString(dateString: String): String {
-
-    val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-    val inputDate = LocalDate.parse(dateString, formatter)
-
-    return inputDate.format(formatter)
-}

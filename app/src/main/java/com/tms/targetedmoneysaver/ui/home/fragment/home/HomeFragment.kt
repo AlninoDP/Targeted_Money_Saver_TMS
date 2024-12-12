@@ -1,7 +1,6 @@
 package com.tms.targetedmoneysaver.ui.home.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +41,6 @@ class HomeFragment : Fragment() {
                             homeViewModel.getClosestGoal().observe(viewLifecycleOwner) {
                                 if (it == null) {
                                     showEmptyState()
-                                    Log.d("NULL", "CLOSEST GOAL NULL")
                                 } else {
                                     setUpClosestGoal(it)
                                 }

@@ -2,7 +2,6 @@ package com.tms.targetedmoneysaver.ui.addgoal.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,8 +49,6 @@ class AddGoalBreakdownFragment : Fragment() {
                 goalBreakdownBtnStartSaving.setOnClickListener {
 
                    val base64String =  addGoalViewModel.getBase64String(requireContext())
-                    Log.d("GILAA", "LESGO $base64String")
-
                     addGoalViewModel.addGoal(
                         goalImage= base64String ?: "",
                         goalTitle=  goal.title ?: "",

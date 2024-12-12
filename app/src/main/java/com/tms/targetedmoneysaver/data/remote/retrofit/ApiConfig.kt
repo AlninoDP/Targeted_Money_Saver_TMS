@@ -33,7 +33,7 @@ class ApiConfig {
                 }
                 if (!authToken.isNullOrEmpty()) {
                     requestBuilder.addHeader("Authorization", "Bearer $authToken")
-                    Log.d("TES", "sssds authToken: $authToken")
+                    Log.d("ApiConfig", "authToken: $authToken")
                 }
                 chain.proceed(requestBuilder.build())
             }

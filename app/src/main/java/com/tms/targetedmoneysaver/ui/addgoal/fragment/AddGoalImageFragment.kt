@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
 import com.tms.targetedmoneysaver.databinding.FragmentAddGoalImageBinding
+import com.tms.targetedmoneysaver.helper.GoalCategoryPredictionHelper
 import com.tms.targetedmoneysaver.ui.ViewModelFactory
 import com.tms.targetedmoneysaver.ui.addgoal.AddGoalViewModel
 import com.tms.targetedmoneysaver.utils.getImageUri
@@ -43,6 +45,26 @@ class AddGoalImageFragment : Fragment() {
         requestPermissionsIfNeeded()
         showImage()
         setUpAppBar()
+
+        val predictionHelper = GoalCategoryPredictionHelper(
+            context = requireContext(),
+            onResult = {
+                Log.d("TUTU","HASILNYA $it")
+
+            },
+            onError = {
+                Toasty.error(requireContext(), it, Toast.LENGTH_SHORT).show()
+            },
+            onDownloadSuccess = {
+                Log.d("TUTU","Download Success")
+            }
+        )
+
+        binding.buttonPredict.setOnClickListener{
+            val input = binding.etGoalDescription.text.toString().trim()
+            predictionHelper.predictCategory(input)
+//            predictionHelper.inspectModel()
+        }
 
         binding.searchImageIcon.setOnClickListener {
             val options = arrayOf("Take Photo", "Choose from Gallery")
