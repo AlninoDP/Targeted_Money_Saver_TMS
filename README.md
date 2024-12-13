@@ -3,7 +3,7 @@
 ## Architecture
 ![Application Architecture](github_assets/architecture.png)
 
-## Architecture
+## Application Screenshoot
 ![Application Architecture](github_assets/app_screenshoot.png)
 
 ## User Interface Design
