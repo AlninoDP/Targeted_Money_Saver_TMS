@@ -3,6 +3,9 @@
 ## Architecture
 ![Application Architecture](github_assets/architecture.png)
 
+## Architecture
+![Application Architecture](github_assets/app_screenshoot.png)
+
 ## User Interface Design
 - [Figma](https://www.figma.com/design/mt57dSF9OE76t4v6ma1W2G/TMS-%3A-Targeted-Money-Saver?node-id=47-74&node-type=frame&t=XlmS2Pblj615rjAF-0)
 
