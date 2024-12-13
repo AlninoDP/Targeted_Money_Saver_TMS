@@ -7,14 +7,16 @@ import com.tms.targetedmoneysaver.data.MainRepository
 import com.tms.targetedmoneysaver.data.local.datastore
 import com.tms.targetedmoneysaver.data.local.room.GoalDatabase
 import com.tms.targetedmoneysaver.data.remote.retrofit.ApiConfig
+import com.tms.targetedmoneysaver.data.remote.retrofit.ApiPredictConfig
 
 object Injection {
     fun provideRepository(context:Context): MainRepository {
         val dataStore = context.datastore
         val apiService = ApiConfig.getApiService(dataStore)
+        val apiPredictService = ApiPredictConfig.getApiPredictService()
         val database = GoalDatabase.getInstance(context)
         val dao = database.goalDao()
-        return MainRepository(apiService, dao)
+        return MainRepository(apiService,apiPredictService, dao)
     }
 
     fun provideAuthRepository( ): AuthRepository {

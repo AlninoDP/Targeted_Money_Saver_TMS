@@ -34,6 +34,8 @@ class AddGoalViewModel(private val mainRepository: MainRepository) : ViewModel()
         goalDailySave
     )
 
+    fun predictCategory(text: String) = mainRepository.predictCategory(text)
+
     private val _goal = MutableLiveData(Goal())
     val goal: LiveData<Goal> get() = _goal
 

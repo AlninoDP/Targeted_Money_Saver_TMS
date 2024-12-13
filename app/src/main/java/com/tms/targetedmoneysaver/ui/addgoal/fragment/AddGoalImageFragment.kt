@@ -5,7 +5,6 @@ import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,8 +17,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.tms.targetedmoneysaver.R
+import com.tms.targetedmoneysaver.data.Result
 import com.tms.targetedmoneysaver.databinding.FragmentAddGoalImageBinding
-import com.tms.targetedmoneysaver.helper.GoalCategoryPredictionHelper
 import com.tms.targetedmoneysaver.ui.ViewModelFactory
 import com.tms.targetedmoneysaver.ui.addgoal.AddGoalViewModel
 import com.tms.targetedmoneysaver.utils.getImageUri
@@ -46,25 +45,6 @@ class AddGoalImageFragment : Fragment() {
         showImage()
         setUpAppBar()
 
-        val predictionHelper = GoalCategoryPredictionHelper(
-            context = requireContext(),
-            onResult = {
-                Log.d("TUTU","HASILNYA $it")
-
-            },
-            onError = {
-                Toasty.error(requireContext(), it, Toast.LENGTH_SHORT).show()
-            },
-            onDownloadSuccess = {
-                Log.d("TUTU","Download Success")
-            }
-        )
-
-        binding.buttonPredict.setOnClickListener{
-            val input = binding.etGoalDescription.text.toString().trim()
-            predictionHelper.predictCategory(input)
-//            predictionHelper.inspectModel()
-        }
 
         binding.searchImageIcon.setOnClickListener {
             val options = arrayOf("Take Photo", "Choose from Gallery")
@@ -86,9 +66,33 @@ class AddGoalImageFragment : Fragment() {
                 addGoalViewModel.updateAmount(binding.etGoalAmount.text.toString().toInt())
                 addGoalViewModel.updateDescription(binding.etGoalDescription.text.toString().trim())
 
+                val titleText = binding.etGoalTitle.text.toString().trim()
+
                 // TODO: SEND INFORMATION TO ANALYZE AND GET CATEGORY PREDICTION
                 addGoalViewModel.goal.value?.imageUri?.let {
-                    findNavController().navigate(R.id.action_addGoalImageFragment_to_addGoalPeriodFragment)
+
+                    addGoalViewModel.predictCategory(titleText).observe(viewLifecycleOwner){ result ->
+                        if(result !=null ){
+                            when(result){
+                                is Result.Loading -> showLoading(result.state)
+                                is Result.Success -> {
+                                    val data = result.data
+                                    val firstCategory = data.category.substringBefore("|")
+                                    addGoalViewModel.updateCategory(firstCategory)
+                                    showLoading(false)
+                                    findNavController().navigate(R.id.action_addGoalImageFragment_to_addGoalPeriodFragment)
+                                }
+                                is Result.Failure -> {
+                                    Toasty.error(
+                                        requireContext(),
+                                        result.throwable.message.toString(),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                        }
+
+                    }
 
                 } ?: Toasty.error(requireContext(), "Please select an image", Toast.LENGTH_SHORT)
                     .show()
@@ -221,6 +225,18 @@ class AddGoalImageFragment : Fragment() {
         )
         binding.topAppBar.setNavigationOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.addGoalImageProgressBar.visibility = View.VISIBLE
+            binding.addGoalButtonConfirm.visibility = View.GONE
+            binding.addGoalBtnClearImage.visibility = View.GONE
+        } else {
+            binding.addGoalImageProgressBar.visibility = View.GONE
+            binding.addGoalButtonConfirm.visibility = View.VISIBLE
+            binding.addGoalBtnClearImage.visibility = View.VISIBLE
         }
     }
 

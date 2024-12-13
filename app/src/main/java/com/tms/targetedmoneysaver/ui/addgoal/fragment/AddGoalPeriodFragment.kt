@@ -69,9 +69,6 @@ class AddGoalPeriodFragment : Fragment() {
             addGoalBtnNextSteps.setOnClickListener {
                 addGoalViewModel.updateDateStarted()
                 addGoalViewModel.updateDailySavingAmount(calculateDailySavingAmount())
-
-                // TODO: DELETE THIS
-                addGoalViewModel.updateCategory("Vehicle")
                 findNavController().navigate(R.id.action_addGoalPeriodFragment_to_addGoalBreakdownFragment)
             }
         }

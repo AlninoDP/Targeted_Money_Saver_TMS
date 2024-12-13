@@ -6,13 +6,17 @@ import androidx.lifecycle.map
 import com.tms.targetedmoneysaver.data.local.entity.GoalEntity
 import com.tms.targetedmoneysaver.data.local.room.GoalDao
 import com.tms.targetedmoneysaver.data.remote.requestbody.AddGoalBody
+import com.tms.targetedmoneysaver.data.remote.requestbody.PredictCategoryBody
 import com.tms.targetedmoneysaver.data.remote.requestbody.UpdateSavingBody
 import com.tms.targetedmoneysaver.data.remote.response.AddGoalResponse
+import com.tms.targetedmoneysaver.data.remote.response.PredictResponse
 import com.tms.targetedmoneysaver.data.remote.response.UpdateSavingResponse
+import com.tms.targetedmoneysaver.data.remote.retrofit.ApiPredictService
 import com.tms.targetedmoneysaver.data.remote.retrofit.ApiService
 
 class MainRepository(
     private val apiService: ApiService,
+    private val apiPredictService: ApiPredictService,
     private val goalDao: GoalDao
 ) {
 
@@ -92,6 +96,18 @@ class MainRepository(
         emit(Result.Loading(true))
         try {
             val response = apiService.updateSaving(UpdateSavingBody(id))
+            emit(Result.Loading(false))
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Loading(false))
+            emit(Result.Failure(e))
+        }
+    }
+
+    fun predictCategory(text:String): LiveData<Result<PredictResponse>> = liveData {
+        emit(Result.Loading(true))
+        try {
+            val response = apiPredictService.predictCategory(PredictCategoryBody(text))
             emit(Result.Loading(false))
             emit(Result.Success(response))
         } catch (e: Exception) {

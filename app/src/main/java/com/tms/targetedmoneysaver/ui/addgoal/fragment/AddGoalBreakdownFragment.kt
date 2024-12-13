@@ -39,31 +39,35 @@ class AddGoalBreakdownFragment : Fragment() {
             binding.apply {
                 goalBreakdownTvGoalTitle.text = goal.title
                 goalBreakdownTvGoalDescription.text = goal.description
-                goalBreakdownTvGoalAmount.text = getString(R.string.goal_detail_item_price, goal.amount)
+                goalBreakdownTvGoalAmount.text =
+                    getString(R.string.goal_detail_item_price, goal.amount)
                 goalBreakdownTvDateStarted.text = goal.dateStarted
                 goalBreakdownTvGoalCategory.text = goal.category
-                goalBreakdownTvDailySaving.text = getString(R.string.goal_breakdown_daily_saving_text, goal.dailySavingAmount)
-                goalBreakdownTvGoalPeriod.text = getString(R.string.goal_breakdown_period, goal.period.toInt())
+                goalBreakdownTvDailySaving.text =
+                    getString(R.string.goal_breakdown_daily_saving_text, goal.dailySavingAmount)
+                goalBreakdownTvGoalPeriod.text =
+                    getString(R.string.goal_breakdown_period, goal.period.toInt())
 
 
                 goalBreakdownBtnStartSaving.setOnClickListener {
 
-                   val base64String =  addGoalViewModel.getBase64String(requireContext())
+                    val base64String = addGoalViewModel.getBase64String(requireContext())
                     addGoalViewModel.addGoal(
-                        goalImage= base64String ?: "",
-                        goalTitle=  goal.title ?: "",
-                        goalAmount= goal.amount,
-                        goalDescription= goal.description ?: "",
-                        goalCategory= goal.category ?: "",
-                        goalPeriod= goal.period.toInt(),
-                        goalDateStarted= goal.dateStarted ?: "",
-                        goalDailySave= goal.dailySavingAmount
-                    ).observe(viewLifecycleOwner){result ->
+                        goalImage = base64String ?: "",
+                        goalTitle = goal.title ?: "",
+                        goalAmount = goal.amount,
+                        goalDescription = goal.description ?: "",
+                        goalCategory = goal.category ?: "",
+                        goalPeriod = goal.period.toInt(),
+                        goalDateStarted = goal.dateStarted ?: "",
+                        goalDailySave = goal.dailySavingAmount
+                    ).observe(viewLifecycleOwner) { result ->
                         if (result != null) {
                             when (result) {
                                 is Result.Loading -> {
-//                                    showLoading(result.state)
+                                    showLoading(result.state)
                                 }
+
                                 is Result.Success -> {
                                     val message = result.data.message
                                     Toasty.success(
@@ -73,10 +77,12 @@ class AddGoalBreakdownFragment : Fragment() {
                                         true
                                     ).show()
                                     val intent = Intent(requireContext(), HomeActivity::class.java)
-                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    intent.flags =
+                                        Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                                     startActivity(intent)
                                     requireActivity().finish()
                                 }
+
                                 is Result.Failure -> {
                                     Toasty.error(
                                         requireContext(),
@@ -102,6 +108,16 @@ class AddGoalBreakdownFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.goalBreakdownProgressBar.visibility = View.VISIBLE
+            binding.goalBreakdownBtnStartSaving.visibility = View.GONE
+        } else {
+            binding.goalBreakdownProgressBar.visibility = View.GONE
+            binding.goalBreakdownBtnStartSaving.visibility = View.VISIBLE
+        }
     }
 
     private fun setUpAppBar() {

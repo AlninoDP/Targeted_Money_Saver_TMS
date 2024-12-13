@@ -26,6 +26,7 @@ android {
 
         defaultConfig {
             buildConfigField("String", "BASE_URL", "\"https://targetted-money-saver.et.r.appspot.com/\"")
+            buildConfigField("String", "BASE_PREDICT_URL", "\"https://tms-ml-api-38627548699.asia-southeast2.run.app/\"")
         }
     }
 
@@ -103,9 +104,5 @@ dependencies {
     // Worker
     implementation(libs.androidx.work.runtime)
 
-    // Tflite
-    implementation(libs.play.services.tflite.java)
-    implementation(libs.play.services.tflite.gpu)
-    implementation(libs.play.services.tflite.support)
 }
 
